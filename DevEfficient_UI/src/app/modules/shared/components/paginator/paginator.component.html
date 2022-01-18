@@ -1,0 +1,56 @@
+<div class="paginator-outer-container">
+  <form
+    [formGroup]="form"
+    class="pagination-container">
+    <div class="paginator-page-size">
+      <label
+        for="pageSizesSelect"
+        class="paginator-page-size-label">
+        {{'paginator.itemsPerPage' | translate}}&#58;&nbsp;
+      </label>
+      <select
+        id="pageSizesSelect"
+        formControlName="currentPageSize"
+        (change)="onChangePageSize($event)"
+        class="paginator-page-size-select">
+        <option
+          *ngFor="let option of pageSizeOptions"
+          [value]="option">
+          {{option}}
+        </option>
+      </select>
+    </div>
+    <div class="paginator-range-actions">
+      <div class="paginator-range-label">
+        {{'paginator.currentPageMessage' | translate : ({currentPage: currentPage.value + 1, numberOfPages: numberOfPages.value})}}
+      </div>
+      <input
+        [formControl]="currentPage"
+        type="hidden">
+      <button
+        type="button"
+        [disabled]="!hasPreviousPage"
+        (click)="onClickPreviousPage()"
+        aria-label="Previous page"
+        class="paginator-range-action">
+        <span
+          class="material-icons"
+          [ngClass]="{'paginator-range-action-icon': hasPreviousPage}">
+          arrow_back_ios
+        </span>
+      </button>
+      <button
+        type="button"
+        [disabled]="!hasNextPage"
+        (click)="onClickNextPage()"
+        aria-label="Next page"
+        class="paginator-range-action">
+        <span
+          class="material-icons "
+          [ngClass]="{'paginator-range-action-icon': hasNextPage}">
+          arrow_forward_ios
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,89 @@
+<form #form="ngForm" [matchPassword]="['psw', 'cpsw']">
+  <div class="container">
+    <div id="username">
+      <label for="uname">
+        <b>{{ 'username' | translate }}</b>
+      </label>
+      <input
+        type="text"
+        [placeholder]="'username' | translate"
+        name="uname"
+        #uname="ngModel"
+        [(ngModel)]="registerModel.username"
+        required
+      />
+      <div *ngIf="uname.touched && uname.invalid">
+        <div class="error" *ngIf="uname.errors?.required">
+          {{ 'validation.fieldRequired' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="password">
+      <label for="psw">
+        <b>{{ 'password' | translate }}</b>
+      </label>
+      <input
+        type="password"
+        [placeholder]="'password' | translate"
+        name="psw"
+        #psw="ngModel"
+        [(ngModel)]="registerModel.passwordHash"
+        required
+        passwordPattern
+      />
+      <div *ngIf="psw.touched && psw.invalid">
+        <div class="error" *ngIf="psw.errors?.required">
+          {{ 'passwordRequired' | translate }}
+        </div>
+        <div class="error" *ngIf="psw.errors?.invalidPassword">
+          {{ 'invalidPassword' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="confirmPassword">
+      <label for="cpsw">
+        <b>{{ 'confirmPassword' | translate }}</b>
+      </label>
+      <input
+        type="password"
+        [placeholder]="'confirmPassword' | translate"
+        name="cpsw"
+        #cpsw="ngModel"
+        [(ngModel)]="registerModel.confirmPassword"
+        required
+      />
+      <div *ngIf="cpsw.touched && cpsw.invalid">
+        <div class="error" *ngIf="cpsw.errors?.required">
+          {{ 'confirmPasswordRequired' | translate }}
+        </div>
+        <div class="error" *ngIf="cpsw.errors?.passwordMismatch">
+          {{ 'passwordMustMatch' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="fullName">
+      <label for="fname">
+        <b>{{ 'fullName' | translate }}</b>
+      </label>
+      <input
+        type="text"
+        [placeholder]="'fullName' | translate"
+        name="fname"
+        #fname="ngModel"
+        [(ngModel)]="registerModel.fullName"
+        required
+      />
+      <div *ngIf="fname.touched && fname.invalid">
+        <div class="error" *ngIf="fname.errors?.required">
+          {{ 'validation.fieldRequired' | translate }}
+        </div>
+      </div>
+    </div>
+    <button class="full-width" (click)="onRegister()" [disabled]="form.invalid || form.pristine">
+      {{ 'register' | translate }}
+    </button>
+    <button class="full-width" (click)="onBackToLogin()">
+      {{ 'backToLogin' | translate }}
+    </button>
+  </div>
+</form>

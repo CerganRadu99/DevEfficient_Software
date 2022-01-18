@@ -1,0 +1,104 @@
+<mat-card class="mat-elevation-z0">
+  <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height">
+    <mat-card-title>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <span fxFlex="90">Update Item</span>
+        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Bug'">bug_report</mat-icon>
+        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Task'">task</mat-icon>
+        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Feature'">emoji_events</mat-icon>
+      </div>
+    </mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
+      <div fxLayout="column">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" placeholder="Title" />
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>EstimatedHours</mat-label>
+          <input matInput formControlName="estimatedHours" />
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Effort</mat-label>
+          <input matInput formControlName="estimatedEffort" />
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
+              {{ priority }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state">
+            <mat-select-trigger> {{ state.value }}</mat-select-trigger>
+            <mat-option *ngFor="let itemState of itemStates" [value]="itemState">
+              {{ itemState }}
+              <mat-icon class="todo-state-icon" *ngIf="itemState === 'ToDo'">fiber_manual_record</mat-icon>
+              <mat-icon class="inprogress-state-icon" *ngIf="itemState === 'InProgress'">fiber_manual_record</mat-icon>
+              <mat-icon class="done-state-icon" *ngIf="itemState === 'Done'">fiber_manual_record</mat-icon>
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="actualItemState === 'Done'">
+          <mat-label>ActualHours</mat-label>
+          <input matInput formControlName="actualHours" />
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type">
+            <mat-select-trigger> {{ type.value }}</mat-select-trigger>
+            <mat-option *ngFor="let itemType of itemTypes" [value]="itemType">
+              {{ itemType }}
+              <mat-icon *ngIf="itemType === 'Bug'">bug_report</mat-icon>
+              <mat-icon *ngIf="itemType === 'Task'">task</mat-icon>
+              <mat-icon *ngIf="itemType === 'Feature'">emoji_events</mat-icon>
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Assigned</mat-label>
+          <mat-select formControlName="assigned">
+            <mat-option *ngFor="let member of data.teamMembers" [value]="member.name">
+              {{ member.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            {{ 'validation.fieldRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Sprint</mat-label>
+          <input matInput formControlName="sprint" />
+        </mat-form-field>
+        <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
+          <button type="submit" [disabled]="this.form.invalid">Save</button>
+          <button type="button" (click)="onCancelClicked()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card>

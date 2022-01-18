@@ -1,0 +1,10 @@
+<div class="navigation-container">
+  <div *ngFor="let link of navLinks">
+    <button
+      class="nav-link"
+      [routerLink]="[link.path]"
+      [queryParams]="link.queryParams">
+      {{ link.title | translate }}
+    </button>
+  </div>
+</div>

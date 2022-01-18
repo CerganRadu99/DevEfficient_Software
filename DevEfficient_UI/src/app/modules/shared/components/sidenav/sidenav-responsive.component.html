@@ -1,0 +1,41 @@
+<div
+  class="sidenav_container"
+  (mouseenter)="onSinenavToggle()"
+  (mouseleave)="onSinenavToggle()"
+  [@onSideNavChange]="sideNavState ? 'open' : 'close'"
+>
+  <div fxLayout="column" fxLayoutGap="10px" style="height: 100%">
+    <div class="user_menu">
+      <mat-nav-list>
+        <a role="button" mat-list-item>
+          <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+            <img
+              class="jim"
+              src="https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1"
+              alt=""
+            />
+            <span [@animateText]="linkText ? 'show' : 'hide'">alex199</span>
+          </div>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <mat-nav-list fxLayout="column">
+        <button mat-list-item (click)="onDevboardClicked()">
+          <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>developer_board</mat-icon>
+            <span [@animateText]="linkText ? 'show' : 'hide'">Devboard</span>
+          </div>
+        </button>
+        <button mat-list-item (click)="onTeamManagementClicked()">
+          <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>manage_accounts</mat-icon>
+            <span [@animateText]="linkText ? 'show' : 'hide'">Team Management</span>
+          </div>
+        </button>
+      </mat-nav-list>
+    </div>
+  </div>
+  <span class="spacer"></span>
+</div>

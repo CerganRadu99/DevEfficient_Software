@@ -1,0 +1,21 @@
+mat-form-field {
+  width: 300px;
+}
+
+.state-icon {
+  font-size: 12px;
+}
+.todo-state-icon {
+  @extend .state-icon;
+  color: grey;
+}
+
+.inprogress-state-icon {
+  @extend .state-icon;
+  color: blue;
+}
+
+.done-state-icon {
+  @extend .state-icon;
+  color: green;
+}

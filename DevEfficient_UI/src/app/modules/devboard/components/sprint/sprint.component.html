@@ -1,0 +1,44 @@
+<mat-card class="main-card" fxFlex="0 1 calc(100% - 96px)" fxFlex.lt-md="0 1 calc(100% - 64px)" fxFlex.lt-sm="100%">
+  <mat-card-title>Plan a sprint</mat-card-title>
+  <div
+    cdkDropList
+    [cdkDropListData]="sprintItems"
+    (cdkDropListDropped)="drop($event)"
+    class="drop-zone"
+    [ngStyle]="{ 'border-style': sprintItems.length === 0 ? 'dotted' : 'none' }"
+    fxLayout="column"
+    fxLayoutGap="6px"
+    fxLayoutAlign="start center"
+  >
+    <ng-container *ngFor="let item of sprintItems">
+      <div class="full-width">
+        <mat-card
+          (mouseover)="toggleHover(item.id)"
+          (mouseout)="removeHover()"
+          (click)="onMatCardClicked(item.id)"
+          hoverClass
+          [ngClass]="{ 'selected-card': selectedItemId === item.id }"
+          class="item-card"
+          fxFlex="0 1 calc(100% - 96px)"
+          fxFlex.lt-md="0 1 calc(100% - 64px)"
+          fxFlex.lt-sm="100%"
+          cdkDrag
+        >
+          <mat-card-content>
+            <div fxLayout="row">
+              <span>{{ item.title }}&nbsp;-&nbsp;</span>
+              <span>EstimatedHours: {{ item.estimatedHours }}&nbsp;</span>
+              <span>Priority: {{ item.priority }}&nbsp;</span>
+              <span>{{ item.state }}&nbsp;</span>
+              <span>Effort: {{ item.effort }}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+    <span *ngIf="sprintItems.length === 0"> Plan a sprint by dragging items here </span>
+  </div>
+  <mat-card-actions fxLayoutAlign="end center">
+    <button (click)="onActivateSprintClicked()">Activate Sprint</button>
+  </mat-card-actions>
+</mat-card>

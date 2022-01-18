@@ -1,0 +1,61 @@
+{
+  "welcomeText": "#Welcome to DevEfficient {key}",
+  "languages": {
+    "languageEN": "#English",
+    "languageNL": "#Netherlands"
+  },
+  "footer": {
+    "version": "v1.0.0#"
+  },
+  "logout": "#Logout",
+  "username": "#Username",
+  "password": "#Password",
+  "confirmPassword": "#Confirm Password",
+  "fullName": "#Full Name",
+  "login": "#Login",
+  "register": "#Register",
+  "backToLogin": "#Back to Login",
+  "passwordRequired": "#Password is required",
+  "invalidPassword": "#Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+  "confirmPasswordRequired": "#Confirm Password is required",
+  "passwordMustMatch": "#Passwords must match",
+  "options": "#Options",
+  "edit": "#Edit",
+  "delete": "#Delete",
+  "archive": "#Archive",
+  "order": {
+    "orders": "#Orders",
+    "number": "#Order number",
+    "client": "#Customer",
+    "capacity": "#Capacity",
+    "value": "#Value",
+    "deliveryDate": "#Delivery Date",
+    "createOrder": "#Create order",
+    "active": "#Active",
+    "archiveConfirmation": "#Are you sure you want to archive the order?",
+    "deleteConfirmation": "#Are you sure you want to delete the order?",
+    "search": "#Search by order number or customer name"
+  },
+  "menu": {
+    "links": {
+      "home": "#Home",
+      "orders": "#Orders"
+    }
+  },
+  "common": {
+    "cancel": "#Cancel",
+    "submit": "#Submit",
+    "back": "#Back"
+  },
+  "validation": {
+    "fieldRequired": "#Field is required.",
+    "maxLength": "#Field must be at most { length } characters long.",
+    "minValue": "#Must be at least {value}.",
+    "maxValue": "#Must be at most {value}."
+  },
+  "loadingMessage": "#Loading...",
+  "paginator": {
+    "itemsPerPage": "#Items per page",
+    "currentPageMessage": "#Page {currentPage} of {numberOfPages}"
+  }
+}

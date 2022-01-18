@@ -1,0 +1,47 @@
+{
+  "welcomeText": "Welcome to DevEfficient {key}",
+  "languages": {
+    "languageEN": "English",
+    "languageNL": "Netherlands"
+  },
+  "footer": {
+    "version": "v1.0.0"
+  },
+  "logout": "Logout",
+  "username": "Username",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "fullName": "Full Name",
+  "login": "Login",
+  "register": "Register",
+  "backToLogin": "Back to Login",
+  "passwordRequired": "Password is required",
+  "invalidPassword": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+  "confirmPasswordRequired": "Confirm Password is required",
+  "passwordMustMatch": "Passwords must match",
+  "options": "Options",
+  "edit": "Edit",
+  "delete": "Delete",
+  "archive": "Archive",
+  "menu": {
+    "links": {
+      "home": "Home"
+    }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back"
+  },
+  "validation": {
+    "fieldRequired": "Field is required.",
+    "maxLength": "Field must be at most { length } characters long.",
+    "minValue": "Must be at least {value}.",
+    "maxValue": "Must be at most {value}."
+  },
+  "loadingMessage": "Loading...",
+  "paginator": {
+    "itemsPerPage": "Items per page",
+    "currentPageMessage": "Page {currentPage} of {numberOfPages}"
+  }
+}

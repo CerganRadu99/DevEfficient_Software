@@ -1,0 +1,5 @@
+<select class="app-select" [formControl]="formControl">
+  <option *ngFor="let option of languageOptions" [value]="option.languageKey">
+    {{ 'languages.' + option.translationKey | translate }}
+  </option>
+</select>

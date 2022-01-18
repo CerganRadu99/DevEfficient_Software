@@ -1,0 +1,55 @@
+<div class="container full-height full-width" cdkDropListGroup>
+  <div class="full-width">
+    <app-sprint (refreshDevboard)="refreshDevboard()"></app-sprint>
+  </div>
+  <div class="full-width" fxLayout="column" fxLayoutGap="20px">
+    <div fxLayoutAlign="end center" fxLayout="row" class="test">
+      <button (click)="onAddItemClicked()" mat-button>
+        <mat-icon class="add-button">add</mat-icon>
+      </button>
+    </div>
+    <div
+      cdkDropList
+      [cdkDropListData]="items"
+      (cdkDropListDropped)="drop($event)"
+      fxLayout="row wrap"
+      fxLayout.lt-sm="column"
+      fxLayoutGap="32px grid"
+      fxLayoutAlign="flex-start"
+    >
+      <ng-container *ngFor="let item of items">
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+          <mat-card
+            cdkDrag
+            (mouseover)="toggleHover(item.id)"
+            (mouseout)="removeHover()"
+            (click)="onMatCardClicked(item.id)"
+            class="mat-elevation-z6"
+            hoverClass
+            [ngClass]="{ 'selected-card': selectedItemId === item.id }"
+          >
+            <div fxLayout="row">
+              <mat-card-title fxFlex="90">{{ item.title }}</mat-card-title>
+              <mat-icon *ngIf="item.type === 'Bug'" fxFlex="10">bug_report</mat-icon>
+              <mat-icon *ngIf="item.type === 'Task'" fxFlex="10">task</mat-icon>
+              <mat-icon *ngIf="item.type === 'Feature'" fxFlex="10">emoji_events</mat-icon>
+            </div>
+            <mat-card-content>
+              <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="10px">
+                  <span>EstimatedHours: {{ item.estimatedHours }}</span>
+                  <span>Priority: {{ item.priority }}</span>
+                </div>
+                <div fxLayout="row" fxLayoutGap="10px">
+                  <span>{{ item.state }}</span>
+                  <span>Effort: {{ item.effort }}</span>
+                </div>
+              </div>
+            </mat-card-content>
+            <!-- <mat-card-actions> </mat-card-actions> -->
+          </mat-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

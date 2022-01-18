@@ -1,0 +1,38 @@
+<!-- Toolbar -->
+<div fxLayout="column" class="full-height">
+  <div class="toolbar" role="banner">
+    <img width="60" src="assets/img/devefficient.png" alt="DevEfficient Logo" />
+    <div class="spacer"></div>
+    <app-navigation *ngIf="authService.isLoggedIn()"></app-navigation>
+    <app-language-select></app-language-select>
+    <button *ngIf="authService.isLoggedIn()" (click)="onLogout()">
+      {{ 'logout' | translate }}
+    </button>
+  </div>
+
+  <div *ngIf="this.authService.isLoggedIn()" class="full-height">
+    <mat-sidenav-container class="full-height">
+      <mat-sidenav #leftSidenav mode="side" opened>
+        <app-sidenav-responsive></app-sidenav-responsive>
+      </mat-sidenav>
+      <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open' : 'close'">
+        <div class="content full-height full-width" role="main">
+          <router-outlet></router-outlet>
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!this.authService.isLoggedIn()" class="content" role="main" fxLayoutAlign="center center">
+    <router-outlet></router-outlet>
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div class="toolbar" fxLayoutAlign="center center">
+    <div fxLayout="row">
+      <span>{{ 'footer.version' | translate }}</span>
+    </div>
+  </div>
+</div>
