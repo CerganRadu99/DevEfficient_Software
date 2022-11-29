@@ -1,0 +1,53 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
+    <img width=120 src="assets/img/email.png">
+    <mat-card class="card-confirmation" fxLayout="column" fxLayoutGap="1rem">
+        <div fxLayout="column" fxLayoutGap="0.5rem">
+            <span class="card-text-title">
+                Do you want to be part of the team? - DevEfficient Software
+            </span>
+            <span class="card-text-subtitle">
+                If yes, first you have to login with your account and then accept invitation. Otherwise, ignore this
+                message!
+            </span>
+        </div>
+        <mat-card-content>
+            <form #form="ngForm" *ngIf="!this.isLoggedIn()">
+                <div class="container">
+                    <div id="username">
+                        <label for="uname">
+                            <b>{{ 'username' | translate }}</b>
+                        </label>
+                        <input type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
+                            [(ngModel)]="loginModel.username" required />
+                        <div *ngIf="uname.touched && uname.invalid">
+                            <div class="error" *ngIf="uname.errors?.required">
+                                {{ 'validation.fieldRequired' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="password">
+                        <label for="psw">
+                            <b>{{ 'password' | translate }}</b>
+                        </label>
+                        <input type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
+                            [(ngModel)]="loginModel.password" required />
+                        <div *ngIf="psw.touched && psw.invalid">
+                            <div class="error" *ngIf="psw.errors?.required">
+                                {{ 'passwordRequired' | translate }}
+                            </div>
+                        </div>
+                    </div>
+                    <button class="full-width" (click)="onLogin()" [disabled]="form.invalid || form.pristine">
+                        {{ 'login' | translate }}
+                    </button>
+                </div>
+            </form>
+
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="end end" *ngIf="this.isLoggedIn()">
+            <button class="accept-bttn" mat-button (click)="onAccept()">
+                Accept
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

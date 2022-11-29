@@ -19,29 +19,39 @@ namespace WebApi.Controllers
     public class AccountController: BaseController
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JwtConfig _jwtConfig;
         private readonly IMapper _mapper;
-        public AccountController(UserManager<IdentityUser> userManager, IOptionsMonitor<JwtConfig> optionsMonitor, IMapper mapper)
+        public AccountController(UserManager<IdentityUser> userManager, IOptionsMonitor<JwtConfig> optionsMonitor, IMapper mapper, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _jwtConfig = optionsMonitor.CurrentValue;
             _mapper = mapper;
         }
 
         [Route("register")]
         [HttpPost]
-
         public async Task<ActionResult<ResponseDto>> Register([FromBody] UserRegistrationDto userRegistrationDto)
         {
             if (ModelState.IsValid)
             {
                 var user = _mapper.Map<IdentityUser>(userRegistrationDto);
                 var result = await _userManager.CreateAsync(user, userRegistrationDto.PasswordHash);
-                if(!result.Succeeded)
+                if(result.Succeeded)
                 {
+                    var userRole = await _roleManager.FindByNameAsync("User");
+                    if(userRole != null)
+                    {
+                        IdentityResult roleResult = await _userManager.AddToRoleAsync(user, userRole.Name);
+                        if(roleResult.Succeeded)
+                        {
+                            return base.HandleResponse();
+                        }
+                    }
                     return base.HandleResponse(DefaultErrors.GetErrors(DefaultErrors.BadRequestError));
                 }
-                return base.HandleResponse();
+                return base.HandleResponse(DefaultErrors.GetErrors(DefaultErrors.BadRequestError));
             }
             else
             {
@@ -61,12 +71,16 @@ namespace WebApi.Controllers
                 if (existingUser is not null)
                 {
                     var checkedPasswordFlag = await _userManager.CheckPasswordAsync(existingUser, userDto.Password);
-                    if (checkedPasswordFlag)
+                    var roles = await _userManager.GetRolesAsync(existingUser);
+                    if (checkedPasswordFlag && roles.Count == 1)
                     {
                         var jwtToken = GenerateJwtToken(existingUser);
                         return base.HandleResponse<SignInResponse>(new SignInResponse
                         {
-                            AccessToken = jwtToken
+                            AccessToken = jwtToken,
+                            Role = roles[0],
+                            Email = existingUser.Email,
+                            Username = existingUser.UserName
                         });
                     }
                     return base.HandleResponse<SignInResponse>(null, DefaultErrors.GetErrors(DefaultErrors.BadRequestError));

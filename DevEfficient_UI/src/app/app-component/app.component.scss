@@ -5,9 +5,20 @@
 }
 
 .mat-drawer-container {
-  background-color: #efefef !important;
+  background-color: white !important;
 }
 
 .mat-drawer-content {
   overflow: hidden !important;
 }
+
+.button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+mat-sidenav {
+  background-color: #F6F5F5;
+}
+
+

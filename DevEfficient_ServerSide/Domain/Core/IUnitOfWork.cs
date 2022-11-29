@@ -7,7 +7,7 @@ namespace Domain.Core
         IItemRepository Items { get; }
         IItemTypeRepository ItemTypes { get; }
         ITeamMemberRoleRepository TeamMemberRoles { get; }
-        IRepository<Sprint> Sprints { get; }
+        ISprintRepository Sprints { get; }
         IStateRepository States { get; }
         IRepository<Team> Teams { get; }
         ITeamMemberRepository TeamMembers { get; }

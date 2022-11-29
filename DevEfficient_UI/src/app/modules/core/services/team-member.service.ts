@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ItemModel } from "../../devboard/models/item.model";
+import { AddMemberModel } from "../../management/models/add-member-model";
 import { CreateMemberModel } from "../../management/models/create-member.model";
 import { RetrievedMemberModel } from "../../management/models/retrieved-member.model";
 import { ResponseModel } from "../../shared/dtos/ResponseModel";
@@ -19,7 +20,7 @@ export class TeamMemberService extends DataService {
     return this.getAll<ResponseModel<Array<RetrievedMemberModel>>>();
   }
 
-  public registerMember(createMemberModel: CreateMemberModel): Observable<ResponseModelNonGeneric> {
+  public registerMember(createMemberModel: AddMemberModel): Observable<ResponseModelNonGeneric> {
     const path = 'register';
     return super.post<ResponseModelNonGeneric>(path, createMemberModel);
   }

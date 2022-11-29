@@ -5,11 +5,14 @@ using Domain.Core;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repository;
+using Infrastructure.Services;
+using Infrastructure.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -67,6 +70,7 @@ namespace WebApi
             });
 
             IMapper mapper = mapperConfig.CreateMapper();
+            services.AddMemoryCache();
             services.AddSingleton(mapper);
             services.AddScoped<IDatabaseTransaction, EntityDatabaseTransaction>();
             services.AddScoped<IItemService, ItemService>();
@@ -87,6 +91,8 @@ namespace WebApi
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
              .AddEntityFrameworkStores<DevEfficientDbContext>();
             services.AddDbContext<DevEfficientDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddScoped<IEmailSenderService, EmailSenderService>();
     }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

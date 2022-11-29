@@ -4,17 +4,26 @@
       <label for="uname">
         <b>{{ 'username' | translate }}</b>
       </label>
-      <input
-        type="text"
-        [placeholder]="'username' | translate"
-        name="uname"
-        #uname="ngModel"
-        [(ngModel)]="registerModel.username"
-        required
-      />
+      <input type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
+        [(ngModel)]="registerModel.username" required />
       <div *ngIf="uname.touched && uname.invalid">
         <div class="error" *ngIf="uname.errors?.required">
           {{ 'validation.fieldRequired' | translate }}
+        </div>
+      </div>
+    </div>
+    <div id="email">
+      <label for="email">
+        <b>{{ 'E-mail' | translate }}</b>
+      </label>
+      <input type="text" [placeholder]="'E-mail' | translate" name="email" #email="ngModel"
+        [(ngModel)]="registerModel.email" required email />
+      <div *ngIf="email.touched && email.invalid">
+        <div class="error" *ngIf="email.errors?.required">
+          {{ 'validation.fieldRequired' | translate }}
+        </div>
+        <div class="error" *ngIf="email.invalid && !email.errors?.required">
+          {{ 'Only e-mail format allowed' | translate }}
         </div>
       </div>
     </div>
@@ -22,15 +31,8 @@
       <label for="psw">
         <b>{{ 'password' | translate }}</b>
       </label>
-      <input
-        type="password"
-        [placeholder]="'password' | translate"
-        name="psw"
-        #psw="ngModel"
-        [(ngModel)]="registerModel.passwordHash"
-        required
-        passwordPattern
-      />
+      <input type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
+        [(ngModel)]="registerModel.passwordHash" required passwordPattern />
       <div *ngIf="psw.touched && psw.invalid">
         <div class="error" *ngIf="psw.errors?.required">
           {{ 'passwordRequired' | translate }}
@@ -44,14 +46,8 @@
       <label for="cpsw">
         <b>{{ 'confirmPassword' | translate }}</b>
       </label>
-      <input
-        type="password"
-        [placeholder]="'confirmPassword' | translate"
-        name="cpsw"
-        #cpsw="ngModel"
-        [(ngModel)]="registerModel.confirmPassword"
-        required
-      />
+      <input type="password" [placeholder]="'confirmPassword' | translate" name="cpsw" #cpsw="ngModel"
+        [(ngModel)]="registerModel.confirmPassword" required />
       <div *ngIf="cpsw.touched && cpsw.invalid">
         <div class="error" *ngIf="cpsw.errors?.required">
           {{ 'confirmPasswordRequired' | translate }}
@@ -65,14 +61,8 @@
       <label for="fname">
         <b>{{ 'fullName' | translate }}</b>
       </label>
-      <input
-        type="text"
-        [placeholder]="'fullName' | translate"
-        name="fname"
-        #fname="ngModel"
-        [(ngModel)]="registerModel.fullName"
-        required
-      />
+      <input type="text" [placeholder]="'fullName' | translate" name="fname" #fname="ngModel"
+        [(ngModel)]="registerModel.fullName" required />
       <div *ngIf="fname.touched && fname.invalid">
         <div class="error" *ngIf="fname.errors?.required">
           {{ 'validation.fieldRequired' | translate }}

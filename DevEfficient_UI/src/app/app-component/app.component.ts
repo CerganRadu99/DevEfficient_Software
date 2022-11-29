@@ -12,6 +12,7 @@ import { onMainContentChange } from '../modules/shared/animations/animations';
 })
 export class AppComponent {
   public onSideNavChange: boolean = false;
+  public opened: boolean = false;
   public constructor(public translate: TranslateService, public authService: AuthService, private _sidenavService: SidenavService) {
     this._sidenavService.sideNavState$.subscribe( res => {
       console.log(res)
@@ -24,6 +25,13 @@ export class AppComponent {
   }
 
   public onLogout(): void {
+    this.opened = false;
+    this._sidenavService.sideNavState$.next(false);
     this.authService.logout();
+  }
+
+  public toggleSidenav() {
+    this._sidenavService.sideNavState$.next(!this.onSideNavChange);
+    this.opened = !this.opened;
   }
 }

@@ -31,12 +31,17 @@ namespace Infrastructure.Persistence.Repository
         {
             _dbSet.Add(dataToRegister);
             return await this._dbContext.SaveChangesAsync();
-            
         }
 
         public async Task<int> Update(T dataToUpdate)
         {
             _dbSet.Update(dataToUpdate);
+            return await this._dbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> Delete(T entity)
+        {
+            _dbSet.Remove(entity);
             return await this._dbContext.SaveChangesAsync();
         }
     }

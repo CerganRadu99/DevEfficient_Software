@@ -1,0 +1,17 @@
+<div class="main-container full-width" fxLayoutGap="1.5rem" fxLayout="column">
+    <div class="introduction-section" fxLayoutAlign="start start">
+        <span class="introduction-section-text">{{this.data}}</span>
+    </div>
+    <div class="actions-section full-width" fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="0.7rem">
+        <div>
+            <button class="yes-bttn" mat-button (click)="onYesClicked()">
+                Yes
+            </button>
+        </div>
+        <div>
+            <button class="no-bttn" mat-button (click)="onNoClicked()">
+                No
+            </button>
+        </div>
+    </div>
+</div>

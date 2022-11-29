@@ -1,44 +1,42 @@
-<mat-card class="main-card" fxFlex="0 1 calc(100% - 96px)" fxFlex.lt-md="0 1 calc(100% - 64px)" fxFlex.lt-sm="100%">
-  <mat-card-title>Plan a sprint</mat-card-title>
-  <div
-    cdkDropList
-    [cdkDropListData]="sprintItems"
-    (cdkDropListDropped)="drop($event)"
-    class="drop-zone"
-    [ngStyle]="{ 'border-style': sprintItems.length === 0 ? 'dotted' : 'none' }"
-    fxLayout="column"
-    fxLayoutGap="6px"
-    fxLayoutAlign="start center"
-  >
+<mat-card class="main-card full-height" fxLayout="column">
+  <div cdkDropList [cdkDropListData]="sprintItems" (cdkDropListDropped)="drop($event)" class="drop-zone"
+    [ngClass]="{'drop-zone': sprintItems.length === 0}" fxLayout="column" fxLayoutGap="15px"
+    class="items-section full-height">
     <ng-container *ngFor="let item of sprintItems">
-      <div class="full-width">
-        <mat-card
-          (mouseover)="toggleHover(item.id)"
-          (mouseout)="removeHover()"
-          (click)="onMatCardClicked(item.id)"
-          hoverClass
-          [ngClass]="{ 'selected-card': selectedItemId === item.id }"
-          class="item-card"
-          fxFlex="0 1 calc(100% - 96px)"
-          fxFlex.lt-md="0 1 calc(100% - 64px)"
-          fxFlex.lt-sm="100%"
-          cdkDrag
-        >
+      <div class="full-width div-card" fxLayoutAlign="start start">
+        <mat-card (mouseover)="toggleHover(item.id)" (mouseout)="removeHover()" class="mat-elevation-z0 sprint-item"
+          fxFlex="0 1 calc(100%)" fxFlex.lt-md="0 1 calc(100%)" fxFlex.lt-sm="100%" cdkDrag
+          (click)="onMatCardClicked(item.id)">
           <mat-card-content>
-            <div fxLayout="row">
-              <span>{{ item.title }}&nbsp;-&nbsp;</span>
-              <span>EstimatedHours: {{ item.estimatedHours }}&nbsp;</span>
-              <span>Priority: {{ item.priority }}&nbsp;</span>
-              <span>{{ item.state }}&nbsp;</span>
-              <span>Effort: {{ item.effort }}</span>
+            <div fxLayout="row" fxLayoutGap="0.2rem">
+              <div>
+                <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png">
+                <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png">
+                <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png">
+              </div>
+              <div>
+                <mat-card-title>{{ item.title }}</mat-card-title>
+              </div>
             </div>
           </mat-card-content>
         </mat-card>
       </div>
     </ng-container>
-    <span *ngIf="sprintItems.length === 0"> Plan a sprint by dragging items here </span>
+    <div fxLayout="row" fxLayoutGap="0.7rem" fxLayoutAlign="center center" class="full-height">
+      <img width=50 *ngIf="sprintItems.length === 0" src="assets/img/planning.png">
+      <div fxLayout="column">
+        <span *ngIf="sprintItems.length === 0" class="text-drop-zone"> Plan your sprint </span>
+        <span *ngIf="sprintItems.length === 0" class="text-drop-zone"> As a team, agree on what needs to be completed,
+          and drag these issues to
+          the sprint </span>
+      </div>
+    </div>
   </div>
   <mat-card-actions fxLayoutAlign="end center">
-    <button (click)="onActivateSprintClicked()">Activate Sprint</button>
+    <button [disabled]="isActivateSprintBtnDisabled()" (click)="onActivateSprintClicked()"
+      class="activate-sprint-bttn"><span
+        [ngClass]="{'activate-sprint-text-disabled': isActivateSprintBtnDisabled(), 'activate-sprint-text': !isActivateSprintBtnDisabled()}"
+        class="activate-sprint-text"><b>Activate
+          Sprint</b></span></button>
   </mat-card-actions>
 </mat-card>

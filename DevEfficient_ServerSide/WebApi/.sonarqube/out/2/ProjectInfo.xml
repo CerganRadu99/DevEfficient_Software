@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Infrastructure</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>cf7e9dd3-ec43-43be-a9f0-5b01cd70fb92</ProjectGuid>
+  <FullPath>C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Infrastructure.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\WebApi\.sonarqube\conf\2\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\WebApi\.sonarqube\out\2\Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\WebApi\.sonarqube\out\2</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>

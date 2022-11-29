@@ -13,6 +13,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -33,7 +39,14 @@ import {MatTableModule} from '@angular/material/table';
         MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatTableModule        
+        MatTableModule,
+        ScrollingModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatTooltipModule,
+        MatExpansionModule,
+        MatSnackBarModule,
+        MatRadioModule        
     ]
 })
 export class MaterialModule {}

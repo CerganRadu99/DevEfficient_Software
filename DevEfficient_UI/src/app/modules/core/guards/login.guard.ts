@@ -9,6 +9,7 @@ export class LoginGuard implements CanActivate {
     constructor(private authSrv: AuthService, private router: Router) {}
 
     public canActivate(): boolean {
+        debugger;
         if (this.authSrv.isLoggedIn()) {
             this.router.navigate(['']);
 

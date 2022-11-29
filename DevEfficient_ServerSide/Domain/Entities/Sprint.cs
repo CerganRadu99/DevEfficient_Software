@@ -12,6 +12,9 @@ namespace Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int? TotalWorkedHours { get; set; }
+        public int TotalEstimatedHours { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsClosed { get; set; }
         public virtual ICollection<Item> Items { get; set; }
     }
 }

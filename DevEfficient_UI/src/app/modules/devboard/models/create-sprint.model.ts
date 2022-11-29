@@ -3,5 +3,5 @@ export interface CreateSprintModel {
     goal: string;
     startDate: Date;
     endDate: Date;
-    itemIds: Array<string>;
+    itemIds?: Array<string>;
 }

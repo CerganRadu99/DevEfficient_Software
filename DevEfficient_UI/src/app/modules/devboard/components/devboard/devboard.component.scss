@@ -1,21 +1,31 @@
 .selected-card {
-  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14), 0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;
-  transform: translate3d(0, 0, 0);
-  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #D6E6F2;
 }
 mat-card-title {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
+  color: black;
+}
+
+mat-card {
+  padding: 6px !important;
 }
 
 .add-button {
-  color: green;
-  font-size: 35px;
-  // margin-right: 96px;
+  color: #8CC0DE;
+  font-size: 25px;
 }
 
-.test {
-  width: calc(100% - 96px);
+.menu-item-icon {
+  font-size: 10px;
+}
+
+.item-logo {
+  font-size: 25px;
+}
+
+.item-card {
+  border: 1px solid #C2CFD8;
 }
 
 @media only screen and (max-width: 599px) {
@@ -28,4 +38,197 @@ mat-card-title {
   .test {
     width: calc(100% - 64px);
   }
+}
+
+.items-section {
+  white-space: nowrap;
+  overflow-y: auto;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  background-color: white !important;
+}
+
+.items-section::-webkit-scrollbar-thumb {
+  background: #8CC0DE;
+  border-radius: 15%;
+}
+
+.items-section::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.5rem;
+  background-color: #aaa; /* or add it to the track */
+  border-radius: 15%;
+}
+
+.create-item-txt{
+  color: #7F8487;
+}
+
+:host {
+  height: 100%;
+  width:100%;
+}
+
+.devboard-item {
+  background-color: white;
+}
+
+.div-card {
+  height: 30px;
+}
+
+.items-section-empty {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23BDC7C9FF' stroke-width='2' stroke-dasharray='6' stroke-dashoffset='10' stroke-linecap='square'/%3e%3c/svg%3e");
+  height: 100px;
+}
+
+.empty-devboard-text {
+  color: black;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+}
+
+::ng-deep .mat-menu-content{
+  background-color:white;
+}
+
+.context-menu-text {
+  color: black;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.selected-menu-option {
+  background-color: rgba(230, 230, 230, 0.9);
+  height: 40px;
+}
+
+.default-menu-option {
+  height: 40px;
+}
+
+.devboard-title {
+  color: black;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.introduction-section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+}
+
+.container-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+}
+
+.search-content {
+  color: black;
+}
+
+.search-form-field {
+  background-color: lightgrey;
+  height: 50px;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  height: 10px !important;
+  background-color: lightgrey !important;
+}
+
+.search-box {
+  border: 1px solid var(--ds-border,#DFE1E6);
+  height: 100%;
+  background-color: rgba(249, 246, 247, 0.2);
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+
+input {
+  outline: none !important;
+  outline-style: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background-color: rgba(249, 246, 247, 0.2);
+}
+
+::placeholder {
+  color: black;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: white !important;
+  padding: 0px !important;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: black !important;
+  height: 5px !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-flex {
+  height: 10px !important;
+  background-color: rgba(249, 246, 247, 0.2) !important;
+}
+
+mat-label {
+  color: #7F7C82;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+}
+
+mat-option {
+  color: black !important;
+}
+mat-select-trigger {
+  color: black;
+}
+
+::ng-deep .mat-select-value-text {
+  color: black;
+}
+
+input {
+  color: black;
+}
+
+::ng-deep .mat-select-panel {
+  background-color: white;
+}
+
+::ng-deep .mat-radio-label-content {
+  color: black !important;
+}
+
+// .filter-box1 {
+//   border: 1px solid var(--ds-border,#DFE1E6);
+//   height: 100%;
+//   background-color: rgba(249, 246, 247, 0.2);
+//   padding: 0.3rem;
+//   border-radius: 0.4rem;
+// }
+
+::ng-deep .mat-radio-outer-circle {
+  background-color: #DAE1E7;
+  // border-color: black !important;
+}
+
+// ::ng-deep .mat-radio-inner-circle {
+//   background-color: black !important;
+// }
+
+mat-select {
+  background-color: #DAE1E7;
+  width: 10rem;
+}
+
+input::placeholder {
+  text-align: left !important;
 }

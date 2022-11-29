@@ -1,0 +1,45 @@
+.main-container {
+    background-color: white;
+    border: 5px solid #C2CFD8;
+}
+
+input {
+    color: black;
+  }
+
+mat-card {
+padding-left: 0px !important;
+padding-right: 0px !important;
+padding-bottom: 0px !important;
+padding-top: 0px !important;
+}
+
+.content-section {
+    padding: 8px 24px 16px;
+}
+
+button {
+    padding: 0 0px;
+}
+
+button:disabled {
+    background-color: white;
+    color: white;
+    cursor: default;
+}
+
+mat-label {
+    color: #7F7C82;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: black;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+  }

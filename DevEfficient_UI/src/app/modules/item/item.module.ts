@@ -7,8 +7,8 @@ import { ItemRoutingModule } from "./item-routing.module";
 
 @NgModule({
     declarations: [
-        ItemAddComponent,
-        ItemEditComponent   
+        // ItemAddComponent,
+        // ItemEditComponent   
     ],
     imports: [ItemRoutingModule, SharedModule],
     providers: []

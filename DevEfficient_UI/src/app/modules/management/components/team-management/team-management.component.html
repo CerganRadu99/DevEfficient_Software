@@ -2,13 +2,8 @@
   <div fxLayout="row" class="full-width team-management-actions">
     <button (click)="onCreateMemberClicked()">Invite member</button>
   </div>
-  <table
-    mat-table
-    [dataSource]="members"
-    cdkDropList
-    cdkDropListOrientation="horizontal"
-    (cdkDropListDropped)="drop($event)"
-  >
+  <table class="users-table" mat-table [dataSource]="members" cdkDropList cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)">
     <ng-container matColumnDef="id">
       <th mat-header-cell cdkDrag *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -29,7 +24,7 @@
       <td mat-cell *matCellDef="let element">{{ element.role }}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    <tr mat-header-row [style.border]="'1.1px solid #C2CFD8'" *matHeaderRowDef="columns"></tr>
+    <tr mat-row [style.border]="'1.1px solid #C2CFD8'" *matRowDef="let row; columns: columns"></tr>
   </table>
 </div>

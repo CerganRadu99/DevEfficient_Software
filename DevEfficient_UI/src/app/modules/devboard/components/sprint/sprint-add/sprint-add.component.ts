@@ -31,8 +31,7 @@ export class SprintAddComponent {
         return this.form.get("endDate") as FormControl;
     }
 
-    constructor(@Inject(MAT_DIALOG_DATA) public sprintItems: Array<ItemModel>,
-                private formBuilder: FormBuilder, 
+    constructor(private formBuilder: FormBuilder, 
                 public dialogRef: MatDialogRef<SprintAddComponent>) {}
 
     public onCancelClicked(){
@@ -40,16 +39,15 @@ export class SprintAddComponent {
     }
 
     public onSubmit() {
-        const sprintItemIds: Array<string> = [];
-        for(let item of this.sprintItems) {
-            sprintItemIds.push(item.id);
-        }
+        // const sprintItemIds: Array<string> = [];
+        // for(let item of this.sprintItems) {
+        //     sprintItemIds.push(item.id);
+        // }
         const createSprintModel: CreateSprintModel = {
             title: this.title.value,
             goal: this.goal.value,
             startDate: this.startDate.value,
             endDate: this.endDate.value,
-            itemIds: sprintItemIds
         };
         this.dialogRef.close({succedeed: true, data: createSprintModel});
     }

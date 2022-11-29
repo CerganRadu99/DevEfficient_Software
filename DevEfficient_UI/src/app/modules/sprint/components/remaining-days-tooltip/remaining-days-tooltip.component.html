@@ -1,0 +1,24 @@
+<div class="tooltip-content" fxLayout="column" fxLayoutGap="1.5rem">
+    <div fxLayout="column">
+        <div>
+            <span class="tooltip-text">
+                Start Date
+            </span>
+        </div>
+        <div>
+            <span class="tooltip-text">{{this.startDate.substring(0, this.startDate.indexOf('T'))}}</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <span class="tooltip-text">
+                Projected End Date
+            </span>
+        </div>
+        <div>
+            <span class="tooltip-text">
+                {{this.endDate.substring(0, this.startDate.indexOf('T'))}}
+            </span>
+        </div>
+    </div>
+</div>

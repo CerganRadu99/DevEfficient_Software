@@ -2,6 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
+import { formControlHasError } from "src/app/modules/shared/utils/form-helpers";
 import { CreateItemModel } from "../../models/create-item.model";
 
 @Component({
@@ -12,13 +13,15 @@ import { CreateItemModel } from "../../models/create-item.model";
 })
 export class ItemAddComponent implements OnInit {
 
+    public formControlHasError = formControlHasError
+
     form = this.formBuilder.group({
         title: new FormControl("", [Validators.required]),
-        estimatedHours: new FormControl("", [Validators.required]),
+        estimatedHours: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
         effortType: new FormControl("", [Validators.required]),
         estimatedEffort: new FormControl("", [Validators.required]),
         priority: new FormControl("", [Validators.required]),
-        state: new FormControl("", [Validators.required]),
+        state: new FormControl({value: 'ToDo', disabled: true}, [Validators.required]),
         type: new FormControl("", [Validators.required])
     });
 
@@ -60,7 +63,7 @@ export class ItemAddComponent implements OnInit {
     public priorities: Array<string> = ["Low", "Medium", "High"];
     public itemTypes: Array<string> = ["Task", "Bug", "Feature"];
     public itemStates: Array<string> = ["ToDo", "InProgress", "Done"];
-    public effortTypes: Array<string> = ["Time", "Story Points", "T-shirt sizes"];
+    public effortTypes: Array<string> = ["Story Points", "T-shirt sizes"];
 
     constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<ItemAddComponent>) {} 
 
@@ -81,6 +84,18 @@ export class ItemAddComponent implements OnInit {
     }
 
     public isEffortTypeSelected() {
+        if(this.actualEffortType !== "") {
+            switch(this.actualEffortType) {
+                case "Story Points":
+                    this.estimatedEffort.clearValidators();
+                    this.estimatedEffort.setValidators([Validators.pattern("^[0-9]*$"), Validators.required]);
+                    break;
+                case "T-shirt sizes":
+                    this.estimatedEffort.clearValidators();
+                    this.estimatedEffort.setValidators([Validators.pattern('^[a-zA-Z]+'), Validators.required]);
+                    break;
+            }
+        }
         return this.actualEffortType !== "";
     }
 }

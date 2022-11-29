@@ -1,0 +1,6 @@
+projectKey=DevEfficient_Frontend
+serverUrl=http://localhost:9000
+serverVersion=9.7.0.61563
+dashboardUrl=http://localhost:9000/dashboard?id=DevEfficient_Frontend
+ceTaskId=AYQ06rEHVvmqWW9vYRlC
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYQ06rEHVvmqWW9vYRlC

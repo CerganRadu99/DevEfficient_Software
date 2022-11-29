@@ -1,0 +1,40 @@
+<testExecutions version="1">
+  <file path="src/app/app-component/app.component.spec.ts">
+    <testCase name="AppComponent should create the app" duration="55">
+      <failure message="Error">NullInjectorError: R3InjectorError(DynamicTestModule)[TranslateService -&gt; TranslateService]: 
+  NullInjectorError: No provider for TranslateService!
+error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'TranslateService', 'TranslateService' ] })
+NullInjectorError: R3InjectorError(DynamicTestModule)[TranslateService -&gt; TranslateService]: 
+  NullInjectorError: No provider for TranslateService!
+    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:11139:27)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:11306:33)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:11306:33)
+    at NgModuleRef.get (node_modules/@angular/core/fesm2020/core.mjs:22189:33)
+    at Object.get (node_modules/@angular/core/fesm2020/core.mjs:21862:35)
+    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3349:39)
+    at getOrCreateInjectable (node_modules/@angular/core/fesm2020/core.mjs:3461:12)
+    at ɵɵdirectiveInject (node_modules/@angular/core/fesm2020/core.mjs:14720:12)
+    at NodeInjectorFactory.factory (ng:///AppComponent/ɵfac.js:4:40)
+    at getNodeInjectable (node_modules/@angular/core/fesm2020/core.mjs:3556:44)
+</failure>
+    </testCase>
+    <testCase name="AppComponent should render title" duration="7">
+      <failure message="Error">NullInjectorError: R3InjectorError(DynamicTestModule)[TranslateService -&gt; TranslateService]: 
+  NullInjectorError: No provider for TranslateService!
+error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'TranslateService', 'TranslateService' ] })
+NullInjectorError: R3InjectorError(DynamicTestModule)[TranslateService -&gt; TranslateService]: 
+  NullInjectorError: No provider for TranslateService!
+    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:11139:27)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:11306:33)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:11306:33)
+    at NgModuleRef.get (node_modules/@angular/core/fesm2020/core.mjs:22189:33)
+    at Object.get (node_modules/@angular/core/fesm2020/core.mjs:21862:35)
+    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3349:39)
+    at getOrCreateInjectable (node_modules/@angular/core/fesm2020/core.mjs:3461:12)
+    at ɵɵdirectiveInject (node_modules/@angular/core/fesm2020/core.mjs:14720:12)
+    at NodeInjectorFactory.factory (ng:///AppComponent/ɵfac.js:4:40)
+    at getNodeInjectable (node_modules/@angular/core/fesm2020/core.mjs:3556:44)
+</failure>
+    </testCase>
+  </file>
+</testExecutions>

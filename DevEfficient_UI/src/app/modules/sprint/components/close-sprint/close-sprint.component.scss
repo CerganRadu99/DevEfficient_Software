@@ -1,0 +1,27 @@
+::ng-deep .mat-dialog-container {
+  background-color: white !important;
+  padding: 0px !important;
+}
+
+.introduction-section-text {
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.yes-bttn {
+    background-color: #7C99AC;
+}
+
+.no-bttn {
+    background-color: #7C99AC;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.main-container {
+    padding: 1rem;
+}

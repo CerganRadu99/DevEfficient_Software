@@ -1,0 +1,38 @@
+.main-container {
+    padding: 5rem;
+}
+
+.card-confirmation {
+    background-color: white;
+}
+
+// mat-card-title {
+//     color: black;
+//     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+//     font-size: 15px;
+// }
+
+.card-text-title {
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.card-text-subtitle {
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+}
+
+mat-card-content {
+    color: black;
+}
+
+.accept-bttn{
+    background-color: #7C99AC;
+
+}
+
+.decline-bttn{
+    background-color: #7C99AC;
+}

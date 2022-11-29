@@ -1,0 +1,158 @@
+.selected-card {
+    background-color: #D6E6F2;
+    border: 1px solid #C2CFD8;
+  }
+
+.mat-card-class {
+    width: 33.3%;
+    background-color: #F9F6F7;
+}
+.to-do-card::-webkit-scrollbar-thumb {
+    background: #8CC0DE;
+    border-radius: 15%;
+  }
+  
+.to-do-card::-webkit-scrollbar {
+width: 0.7rem;
+height: 0.5rem;
+background-color: #aaa; /* or add it to the track */
+border-radius: 15%;
+}
+
+.in-progress-card::-webkit-scrollbar-thumb {
+    background: #8CC0DE;
+    border-radius: 15%;
+  }
+  
+.in-progress-card::-webkit-scrollbar {
+width: 0.7rem;
+height: 0.5rem;
+background-color: #aaa; /* or add it to the track */
+border-radius: 15%;
+}
+
+.done-card::-webkit-scrollbar-thumb {
+    background: #8CC0DE;
+    border-radius: 15%;
+}
+  
+.done-card::-webkit-scrollbar {
+width: 0.7rem;
+height: 0.5rem;
+background-color: #aaa; /* or add it to the track */
+border-radius: 15%;
+}
+
+.to-do-card {
+    width: 33.3%;
+    background-color: #F9F6F7;
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+.in-progress-card {
+    width: 33.3%;
+    background-color: rgba(154, 220, 255, 0.2);
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+.done-card {
+    width: 33.3%;
+    background-color: rgba(180, 225, 151, 0.2);
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+:host {
+    height: 100%;
+    width:100%;
+}
+
+mat-card-title {
+    font-size: 15px;
+    color: #7F7C82;
+}
+
+.sprint-title {
+    color: black;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.sprint-days {
+    color: black;
+}
+
+.introduction-section {
+    padding: 2rem;
+    width: 100%;
+}
+
+.container-content {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.currentsprint-item {
+    background-color: white;
+    border: 1px solid #C2CFD8;
+}
+
+.no-sprint-text1 {
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+}
+.no-sprint-text2 {
+    color: black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+}
+
+.effort-item {
+    color: black;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: black !important;
+  }
+
+  mat-label {
+      color: black;
+  }
+
+  input {
+      color: black;
+  }
+
+  .log-hours-bttn {
+    background-color: #7C99AC;
+  }
+
+  button {
+    padding: 0 0px;
+  }
+
+  button:disabled {
+    background-color: #D6E6F2;;
+    color: white;
+    cursor: default;
+  }
+
+  .close-sprint-bttn {
+      background-color: rgba(230, 230, 230, 0.9);
+  }
+
+  .complete-sprint-bttn-text {
+      padding: 12px;
+      color: #7F7C82;
+  }
+
+  .partial-height {
+      height: 13%;
+  }

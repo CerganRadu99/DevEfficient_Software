@@ -1,0 +1,173 @@
+<div class="main-container" fxLayout="column" class="full-width full-height" fxLayoutGap="0.1rem">
+    <div *ngIf="isCurrentSprintReady" class="introduction-section" fxLayout="row" fxFlex="12">
+        <div fxLayoutAlign="start center" fxFlex="50">
+            <span *ngIf="this.isSprintActivated" class="sprint-title">{{this.retrievedCurrentSprintModel.title}}</span>
+            <span *ngIf="!this.isSprintActivated" class="sprint-title">Active Sprint</span>
+        </div>
+        <div fxLayoutGap="0.7rem" fxLayoutAlign="end center" fxFlex="50">
+            <div *ngIf="this.isSprintActivated" fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.2rem"
+                customToolTip [contentTemplate]="template"
+                [startDate]="this.retrievedCurrentSprintModel.startDate.toString()"
+                [endDate]="this.retrievedCurrentSprintModel.endDate.toString()">
+                <img width=25 src="assets/img/clock.png">
+                <span class="sprint-days">{{this.remainingDays}} days remaining</span>
+            </div>
+            <div>
+                <button *ngIf="this.isSprintActivated" (click)="onCompleteSprintClicked()"
+                    [disabled]="isCompleteSprintButtonDisabled()" class="close-sprint-bttn" mat-button>
+                    <span class="complete-sprint-bttn-text">Complete Sprint</span>
+                </button>
+            </div>
+        </div>
+        <ng-template #template>
+            <div style="display: flex; flex-direction: column">
+                <span>tooltip text</span>
+                <span>tootlip description</span>
+            </div>
+        </ng-template>
+    </div>
+    <div fxLayout="column" fxLayoutGap="5rem" fxFlex="88">
+        <div class="container-content full-width" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="2rem"
+            cdkDropListGroup
+            [ngClass]="{'full-height': this.isSprintActivated, 'partial-height': !this.isSprintActivated}">
+            <ng-container *ngFor="let state of states" class="full-height">
+                <mat-card class="mat-elevation-z0"
+                    [ngClass]="{'to-do-card': state === 'TO DO', 'in-progress-card': state === 'IN PROGRESS', 'done-card': state === 'DONE'}"
+                    cdkDropList
+                    [cdkDropListData]="state === 'TO DO' ? this.toDoItems : state === 'IN PROGRESS' ? this.inProgressItems : this.doneItems"
+                    (cdkDropListDropped)="drop($event)" id="{{state}}" fxLayout="column">
+                    <div fxFlex="5">
+                        <mat-card-title>
+                            {{state}}
+                        </mat-card-title>
+                    </div>
+                    <mat-card-content fxFlex="95">
+                        <div *ngIf="state === 'TO DO'" fxLayout="column" fxLayoutGap="0.3rem">
+                            <ng-container *ngFor="let item of this.toDoItems">
+                                <mat-card (mouseover)=" toggleHover(item.id)" (mouseout)="removeHover()" cdkDrag
+                                    [ngClass]="{ 'selected-card': selectedItemId === item.id, 'currentsprint-item' : selectedItemId !== item.id }">
+                                    <mat-card-title>{{item.title}}</mat-card-title>
+                                    <div fxLayout="row" fxLayoutGap="0.3rem">
+                                        <div>
+                                            <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
+                                                matTooltip="Bug">
+                                            <img width=20 *ngIf="item.type === 'Task'"
+                                                src="assets/img/administration.png" matTooltip="Task">
+                                            <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png"
+                                                matTooltip="Feature">
+                                        </div>
+                                        <div>
+                                            <img width=20 *ngIf="item.priority === 'Low'"
+                                                src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                            <img width=20 *ngIf="item.priority === 'Medium'"
+                                                src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                            <img width=20 *ngIf="item.priority === 'High'"
+                                                src="assets/img/prioritize.png" matTooltip="High Priority">
+                                        </div>
+                                        <div>
+                                            <span class="effort-item"
+                                                matTooltip="Story Points/T-shirt sizes">{{item.effort}}</span>
+                                        </div>
+                                    </div>
+                                </mat-card>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="state === 'IN PROGRESS'" fxLayout="column" fxLayoutGap="0.3rem">
+                            <ng-container *ngFor="let item of this.inProgressItems">
+                                <mat-card (mouseover)=" toggleHover(item.id)" (mouseout)="removeHover()" cdkDrag
+                                    [ngClass]="{ 'selected-card': selectedItemId === item.id, 'currentsprint-item' : selectedItemId !== item.id }">
+                                    <mat-card-title>{{item.title}}</mat-card-title>
+                                    <div fxLayout="row" fxLayoutGap="0.3rem">
+                                        <div>
+                                            <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
+                                                matTooltip="Bug">
+                                            <img width=20 *ngIf="item.type === 'Task'"
+                                                src="assets/img/administration.png" matTooltip="Task">
+                                            <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png"
+                                                matTooltip="Feature">
+                                        </div>
+                                        <div>
+                                            <img width=20 *ngIf="item.priority === 'Low'"
+                                                src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                            <img width=20 *ngIf="item.priority === 'Medium'"
+                                                src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                            <img width=20 *ngIf="item.priority === 'High'"
+                                                src="assets/img/prioritize.png" matTooltip="High Priority">
+                                        </div>
+                                        <div>
+                                            <span class="effort-item"
+                                                matTooltip="Story Points/T-shirt sizes">{{item.effort}}</span>
+                                        </div>
+                                    </div>
+                                </mat-card>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="state === 'DONE'" fxLayout="column" fxLayoutGap="0.3rem">
+                            <ng-container *ngFor="let item of this.doneItems">
+                                <mat-card (mouseover)=" toggleHover(item.id)" (mouseout)="removeHover()" cdkDrag
+                                    [ngClass]="{ 'selected-card': selectedItemId === item.id, 'currentsprint-item' : selectedItemId !== item.id }">
+                                    <mat-card-title>{{item.title}}</mat-card-title>
+                                    <div fxLayout="row" class="full-width">
+                                        <div fxLayout="row" fxLayoutGap="0.3rem" fxFlex="50"
+                                            fxLayoutAlign="start center">
+                                            <div>
+                                                <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
+                                                    matTooltip="Bug">
+                                                <img width=20 *ngIf="item.type === 'Task'"
+                                                    src="assets/img/administration.png" matTooltip="Task">
+                                                <img width=20 *ngIf="item.type === 'Feature'"
+                                                    src="assets/img/trophyy.png" matTooltip="Feature">
+                                            </div>
+                                            <div>
+                                                <img width=20 *ngIf="item.priority === 'Low'"
+                                                    src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                                <img width=20 *ngIf="item.priority === 'Medium'"
+                                                    src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                                <img width=20 *ngIf="item.priority === 'High'"
+                                                    src="assets/img/prioritize.png" matTooltip="High Priority">
+                                            </div>
+                                            <div>
+                                                <span class="effort-item"
+                                                    matTooltip="Story Points/T-shirt sizes">{{item.effort}}</span>
+                                            </div>
+                                        </div>
+                                        <!-- <div fxLayoutAlign="end start" *ngIf="isItemDone(item.id)" fxFlex="50">
+                                            <form [formGroup]="form">
+                                                <div fxLayout="row" fxLayoutGap="0.5rem">
+                                                    <mat-form-field>
+                                                        <mat-label>ActualWorkedHours</mat-label>
+                                                        <input matInput placeholder="ActualWorkedHours"
+                                                            formControlName="actualWorkedHours" />
+                                                        <mat-error>
+                                                            {{ 'validation.fieldRequired' | translate }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                    <button [disabled]="this.form.invalid">
+                                                        <img width=23 src="assets/img/correct.png"
+                                                            matTooltip="Check fields"
+                                                            matTooltipDisabled="{{!this.form.invalid}}">
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div> -->
+                                    </div>
+                                </mat-card>
+                            </ng-container>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+        <div *ngIf="!this.isSprintActivated" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="1rem">
+            <img width=130 src="assets/img/file-transfer.png">
+            <div fxLayout="column" fxLayoutAlign="enter center" fxLayoutGap="0.3rem">
+                <span class="no-sprint-text1">
+                    There are no active sprints
+                </span>
+                <span class="no-sprint-text2">
+                    Go plan a sprint in the <a [routerLink]="devboardPath">Devboard</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>

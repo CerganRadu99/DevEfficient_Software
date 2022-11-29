@@ -12,6 +12,7 @@ import { HomeModule } from './modules/home/home.module';
 import { DevboardModule } from './modules/devboard/devboard.module';
 import { ManagementModule } from './modules/management/management.module';
 import { ItemModule } from './modules/item/item.module';
+import { SidenavModule } from './modules/sidenav-menu/components/sidenav-menu.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ItemModule } from './modules/item/item.module';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    HomeModule
+    DevboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

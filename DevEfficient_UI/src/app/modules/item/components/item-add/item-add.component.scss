@@ -19,3 +19,94 @@ mat-form-field {
   @extend .state-icon;
   color: green;
 }
+
+.main-card {
+  background-color: white;
+  border: 5px solid #C2CFD8;
+}
+
+span {
+  color: black;
+}
+
+mat-label {
+  color: #7F7C82;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+}
+
+mat-option {
+  color: black !important;
+}
+mat-select-trigger {
+  color: black;
+}
+
+::ng-deep .mat-select-value-text {
+  color: black;
+}
+
+input {
+  color: black;
+}
+
+::ng-deep .mat-select-panel {
+  background-color: white;
+}
+
+.todo-state-icon {
+  color: rgba(127, 132, 135, 0.9);
+
+}
+
+.inprogress-state-icon {
+  color: rgba(154, 220, 255, 0.9);
+}
+
+.done-state-icon {
+  color: rgba(180, 225, 151, 0.9);
+}
+
+mat-icon {
+  font-size: 18px !important;
+}
+
+mat-card-title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.introduction-section {
+  background-color: #F9F6F7;
+  // border: 1px solid #C2CFD8;
+  padding: 8px 24px 16px;
+}
+
+mat-card {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.content-section {
+  padding: 8px 24px 16px;
+}
+
+.mat-input-element:disabled {
+  color: black !important;
+}
+
+button:disabled {
+  background-color: white;
+  color: white;
+  cursor: default;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  padding: 0 0px;
+}

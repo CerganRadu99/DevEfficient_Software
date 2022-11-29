@@ -1,0 +1,42 @@
+.main-card {
+    background-color: white;
+    border: 5px solid #C2CFD8;
+}
+
+span {
+color: black;
+}
+
+mat-label {
+color: #7F7C82;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: 500;
+}
+
+input {
+    color: black;
+}
+
+::ng-deep .mat-datepicker-toggle {
+    color: #7C99AC;
+}
+
+button {
+    padding: 0 0px;
+    text-align: right;
+}
+
+button:disabled {
+    background-color: white;
+    color: white;
+    cursor: default;
+}
+
+mat-card-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+::ng-deep .mat-datepicker-content {
+    background-color: #4592AF ! important;
+}

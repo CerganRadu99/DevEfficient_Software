@@ -9,7 +9,7 @@ namespace Domain.Core
 {
     public interface IItemRepository: IRepository<Item>
     {
-        public Task<IEnumerable<RetrievedItemDto>> GetFullItems();
+        public Task<IEnumerable<RetrievedItemDto>> GetFullItems(GetItemsBodyModel getItemsBodyModel);
         public Task<ItemDetailsDto> GetFullItem(Guid itemId);
     }
 }

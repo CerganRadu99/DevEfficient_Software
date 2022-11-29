@@ -13,30 +13,28 @@ import { CreateMemberModel } from "../../models/create-member.model";
 export class MemberAddComponent {
 
     form = this.formBuilder.group({
-        name: new FormControl("", [Validators.required]),
-        email: new FormControl("", [Validators.required]),
-        role: new FormControl("", [Validators.required]),
+        // name: new FormControl("", [Validators.required]),
+        email: new FormControl("", [Validators.required])
+        // role: new FormControl("", [Validators.required]),
     });
 
     constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<MemberAddComponent>) {} 
 
-    get name(): FormControl {
-        return this.form.get("name") as FormControl;
-    }
+    // get name(): FormControl {
+    //     return this.form.get("name") as FormControl;
+    // }
 
     get email(): FormControl {
         return this.form.get("email") as FormControl;
     }
 
-    get role(): FormControl {
-        return this.form.get("role") as FormControl;
-    }
+    // get role(): FormControl {
+    //     return this.form.get("role") as FormControl;
+    // }
 
     public onSubmit() {
         const createMemberModel: CreateMemberModel = {
-            name: this.name.value,
-            email: this.email.value,
-            role: this.role.value
+            email: this.email.value
         }
         this.dialogRef.close({succedeed: true, data: createMemberModel});
     }

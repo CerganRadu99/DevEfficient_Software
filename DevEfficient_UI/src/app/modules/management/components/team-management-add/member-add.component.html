@@ -1,17 +1,19 @@
-<mat-card class="mat-elevation-z0">
-  <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height">
-    <mat-card-title>
-      <span>Invite Member</span>
-    </mat-card-title>
+<mat-card class="main-container mat-elevation-z0">
+  <div fxLayout="column" class="full-width full-height content-section" fxLayoutGap="1rem">
+    <div fxLayoutAlign="start start">
+      <mat-card-title>
+        <span class="card-title">Invite Member</span>
+      </mat-card-title>
+    </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
       <div fxLayout="column">
-        <mat-form-field>
+        <!-- <mat-form-field>
           <mat-label>Name</mat-label>
           <input matInput formControlName="name" placeholder="Name" />
           <mat-error>
             {{ 'validation.fieldRequired' | translate }}
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" />
@@ -19,16 +21,25 @@
             {{ 'validation.fieldRequired' | translate }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field>
           <mat-label>Role</mat-label>
           <input matInput formControlName="role" placeholder="Role" />
           <mat-error>
             {{ 'validation.fieldRequired' | translate }}
           </mat-error>
-        </mat-form-field>
-        <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
+        </mat-form-field> -->
+        <!-- <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
           <button type="submit" [disabled]="this.form.invalid">Save</button>
           <button type="button" (click)="onCancelClicked()">Cancel</button>
+        </div> -->
+        <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem" fxFlex="7" class="actions-section">
+          <button type="submit" [disabled]="this.form.invalid" mat-button fxLayoutAlign="end end">
+            <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
+              matTooltipDisabled="{{!this.form.invalid}}">
+          </button>
+          <button type="button" (click)="onCancelClicked()" mat-button fxLayoutAlign="end end">
+            <img fxLayoutAlign="end end" width=14 src="assets/img/cancel.png">
+          </button>
         </div>
       </div>
     </form>

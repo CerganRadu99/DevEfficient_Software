@@ -1,0 +1,50 @@
+<div class="sidenav_container" class="full-height">
+  <div fxLayout="column" fxLayoutGap="10px" style="height: 100%">
+    <!-- <div class="user_menu">
+      <mat-nav-list>
+        <a role="button" mat-list-item>
+          <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+            <img class="jim"
+              src="https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1"
+              alt="" />
+            <span [@animateText]="linkText ? 'show' : 'hide'">alex199</span>
+          </div>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+    </div> -->
+    <div class="full-height" fxLayout="column">
+      <mat-nav-list fxLayout="column" class="full-height">
+        <div fxFlex="70">
+          <button mat-list-item (click)="onDevboardClicked();onSinenavToggle()">
+            <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+              <img width=25 src="assets/img/dashboard.png">
+              <span class="menu-text" [@animateText]="linkText ? 'show' : 'hide'">Devboard</span>
+            </div>
+          </button>
+          <button mat-list-item (click)="onCurrentSprintClicked();onSinenavToggle()">
+            <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+              <img width=25 src="assets/img/agile.png">
+              <span class="menu-text" [@animateText]="linkText ? 'show' : 'hide'">Current Sprint</span>
+            </div>
+          </button>
+          <button *ngIf="this.isAdmin()" mat-list-item (click)="onTeamManagementClicked();onSinenavToggle()">
+            <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+              <img width=25 src="assets/img/team.png">
+              <span class="menu-text" [@animateText]="linkText ? 'show' : 'hide'">Team Management</span>
+            </div>
+          </button>
+        </div>
+        <div fxFlex="30" fxLayoutAlign="center end">
+          <button *ngIf="authService.isLoggedIn()" (click)="onLogout()" mat-list-item>
+            <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="start center">
+              <img width=25 src="assets/img/logout1.png">
+              <span class="menu-text" [@animateText]="linkText ? 'show' : 'hide'">{{ 'logout' | translate }}</span>
+            </div>
+          </button>
+        </div>
+      </mat-nav-list>
+    </div>
+  </div>
+  <span class="spacer"></span>
+</div>

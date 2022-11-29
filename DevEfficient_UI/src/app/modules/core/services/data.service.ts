@@ -58,6 +58,23 @@ export abstract class DataService {
     const options = {
       params: new HttpInterceptorParams(params),
     };
+    return this.http.put<T>(url, body, options);
+  }
+
+  public updateWithoutBody<T> (
+    id: string,
+    entity?: any,
+    path?: string,
+    params?: HttpInterceptorConfig
+  ): Observable<T>{
+    let body = null;
+    if(entity) {
+      body = JSON.stringify(entity);
+    }
+    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
+    const options = {
+      params: new HttpInterceptorParams(params),
+    };
 
     return this.http.put<T>(url, body, options);
   }
@@ -119,11 +136,25 @@ export abstract class DataService {
   }
 
   public delete(
-    id: number,
+    id: string,
     path?: string,
     params?: HttpInterceptorConfig
   ): Observable<any> {
     const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
+
+    const options = {
+      params: new HttpInterceptorParams(params),
+    };
+
+    return this.http.delete<any>(url, options);
+  }
+
+  public deleteWithoutId(
+    path: string,
+    id?: string,
+    params?: HttpInterceptorConfig
+  ): Observable<any> {
+    const url = id ? `${this.url}/${path}/${id}` : `${this.url}/${path}`;
 
     const options = {
       params: new HttpInterceptorParams(params),

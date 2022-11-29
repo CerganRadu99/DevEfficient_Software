@@ -8,5 +8,8 @@ namespace WebApi.Dtos
     public class SignInResponse
     {
         public string AccessToken { get; set; }
+        public string Role { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
     }
 }

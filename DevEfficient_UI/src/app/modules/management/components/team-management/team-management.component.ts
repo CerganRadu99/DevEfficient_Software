@@ -2,7 +2,9 @@
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, OnDestroy, OnInit} from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { concatMap, of, Subject, takeUntil } from "rxjs";
+import { MailService } from "src/app/modules/core/services/mail.service";
 import { TeamMemberService } from "src/app/modules/core/services/team-member.service";
 import { RetrievedMemberModel } from "../../models/retrieved-member.model";
 import { MemberAddComponent } from "../team-management-add/member-add.component";
@@ -15,7 +17,7 @@ export class TeamManagementComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   public members: Array<RetrievedMemberModel> = [];
 
-  constructor(private teamMemberService: TeamMemberService, public dialog: MatDialog) {}
+  constructor(private teamMemberService: TeamMemberService, private mailService: MailService, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
     ngOnDestroy(): void {
       this.ngUnsubscribe.next();
@@ -28,7 +30,6 @@ export class TeamManagementComponent implements OnInit, OnDestroy {
       )
       .subscribe(response => {
         this.members = response.data;
-        debugger;
       }); 
     }
 
@@ -40,12 +41,14 @@ export class TeamManagementComponent implements OnInit, OnDestroy {
 
       dialogRef.afterClosed().pipe(
         concatMap((result) => {
+          debugger;
           if(result !== undefined){
             if(result.succedeed === false) {
               return of(null);
             }
             else {
-              return this.teamMemberService.registerMember(result.data);
+              // return this.teamMemberService.registerMember(result.data);
+              return this.mailService.sendEmail({toEmail: result.data.email});
             }
           }
           return of(null);
@@ -55,13 +58,14 @@ export class TeamManagementComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         if(response !== null) {
           if(response.succeeded === true) {
-            //dialog - item added successfully
-            this.ngOnInit();
+            this._snackBar.open('Invitation was successfully sent!', 'Close', {
+              verticalPosition: 'bottom',
+              horizontalPosition: 'end',
+              duration: 3000,
+              panelClass: ["snackbar-mail-style"]
+            });
           }
-          else {
-            //dialog - item not added
-          }
-        }    
+        }   
       });
     }
 

@@ -1,3 +1,142 @@
-mat-form-field {
-  width: 300px;
+.main-container {
+  height: 98%;
 }
+
+.main-card {
+  background-color: white;
+  height: 100%;
+  padding: 0px;
+}
+
+span {
+  color: black;
+}
+
+mat-label {
+  color: #7F7C82;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 500;
+}
+
+mat-option {
+  color: black !important;
+}
+mat-select-trigger {
+  color: black;
+}
+
+::ng-deep .mat-select-value-text {
+  color: black;
+}
+
+input {
+  color: black;
+}
+
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: black !important;
+}
+
+::ng-deep .mat-select-panel {
+  background-color: white;
+}
+
+.todo-state-icon {
+  color: rgba(127, 132, 135, 0.9);
+
+}
+
+.inprogress-state-icon {
+  color: rgba(154, 220, 255, 0.9);
+}
+
+.done-state-icon {
+  color: rgba(180, 225, 151, 0.9);
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-flex {
+  height: 35px !important
+}
+
+button:disabled {
+  background-color: white;
+  color: white;
+  cursor: default;
+}
+
+.item-details {
+  border: 1px solid #C2CFD8;
+  padding: 1rem;
+}
+
+.item-details-panel-opened {
+  background-color: white;
+  border: 1px solid #C2CFD8;
+}
+
+.item-details-panel-closed {
+  background-color: white;
+  border-top: 1px solid #C2CFD8;
+}
+
+
+.actions-section {
+  background-color: white;
+  border: 1px solid #C2CFD8;
+}
+
+mat-panel-title {
+  color: #413F42;
+  font-weight: 700;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+mat-panel-description {
+  color: black;
+}
+
+.item-introduction {
+  border: 1px solid #C2CFD8;
+  padding: 1rem;
+}
+
+.panel-header-class-opened {
+  border-bottom: 1px solid #C2CFD8;
+  background-color: #F9F6F7 !important;
+}
+
+.panel-header-class-closed {
+  border-bottom: 1px solid #C2CFD8;
+  border-right: 1px solid #C2CFD8;
+  border-left: 1px solid #C2CFD8;
+  background-color: #F9F6F7 !important;
+}
+
+::ng-deep .mat-expansion-indicator:after {
+  color: black;
+}
+
+.to-do-class {
+  background-color: #F9F6F7;
+}
+
+.in-progress-class {
+  background-color: rgba(154, 220, 255, 0.2);
+}
+
+.done-class {
+  background-color: rgba(180, 225, 151, 0.2);
+}
+
+mat-icon {
+  font-size: 18px !important;
+}
+
+button {
+  padding: 0 0px;
+}
+

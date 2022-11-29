@@ -1,41 +1,97 @@
-<div class="container full-height full-width" cdkDropListGroup>
-  <div class="full-width">
-    <app-sprint (refreshDevboard)="refreshDevboard()"></app-sprint>
-  </div>
-  <div class="full-width" fxLayout="column" fxLayoutGap="20px">
-    <div fxLayoutAlign="end center" fxLayout="row" class="test">
-      <button (click)="onAddItemClicked()" mat-button>
-        <mat-icon class="add-button">add</mat-icon>
-      </button>
-    </div>
-    <div
-      cdkDropList
-      [cdkDropListData]="items"
-      (cdkDropListDropped)="drop($event)"
-      fxLayout="row wrap"
-      fxLayout.lt-sm="column"
-      fxLayoutGap="32px grid"
-      fxLayoutAlign="flex-start"
-    >
-      <ng-container *ngFor="let item of items">
-        <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-          <mat-card
-            cdkDrag
-            (mouseover)="toggleHover(item.id)"
-            (mouseout)="removeHover()"
-            (click)="onMatCardClicked(item.id)"
-            class="mat-elevation-z6"
-            hoverClass
-            [ngClass]="{ 'selected-card': selectedItemId === item.id }"
-          >
-            <div fxLayout="row">
-              <mat-card-title fxFlex="90">{{ item.title }}</mat-card-title>
-              <mat-icon *ngIf="item.type === 'Bug'" fxFlex="10">bug_report</mat-icon>
-              <mat-icon *ngIf="item.type === 'Task'" fxFlex="10">task</mat-icon>
-              <mat-icon *ngIf="item.type === 'Feature'" fxFlex="10">emoji_events</mat-icon>
+<div class="full-width full-height" cdkDropListGroup fxLayout="column" fxLayoutGap="1.3rem">
+  <div fxLayout="row" class="introduction-section" fxFlex="18">
+    <div fxLayout="column" fxLayoutGap="1rem" class="full-width">
+      <div fxLayout="row" fxLayoutAlign="start start" fxFlex="50">
+        <span class="devboard-title">Devboard</span>
+      </div>
+      <div fxLayoutAlign="start end" fxLayout="row" fxLayoutGap="1rem" class="full-width" fxFlex="50">
+        <div class="full-height" fxFlex="15">
+          <div fxLayout="row" class="search-box">
+            <div fxLayoutAlign="start center" fxFlex="80">
+              <input class="search-content" type="tel" matInput placeholder="Search" name="search"
+                [formControl]="searchControl" placeholder="Search Devboard">
             </div>
-            <mat-card-content>
-              <div fxLayout="column">
+            <div fxLayoutAlign="center center" fxFlex="20">
+              <img width=20 height="20" src="assets/img/magnifying-glass.png">
+            </div>
+          </div>
+        </div>
+        <div fxFlex="85" fxLayout="row" fxLayoutAlign="end end">
+          <form [formGroup]="form" fxLayout="row" fxLayoutGap="1rem">
+            <div fxLayoutAlign="center center">
+              <mat-radio-group fxLayout="row" aria-label="Select an option" formControlName="filterOption1">
+                <div fxLayoutGap="0.7rem">
+                  <mat-radio-button value="All Items" [checked]="this.isRadioButtonNone"
+                    (change)="onRadioChange($event)">
+                    All Items
+                  </mat-radio-button>
+                  <mat-radio-button value="Type" (change)="onRadioChange($event)">Type</mat-radio-button>
+                  <mat-radio-button value="Priority" (change)="onRadioChange($event)">Priority</mat-radio-button>
+                  <mat-radio-button value="State" (change)="onRadioChange($event)">State</mat-radio-button>
+                  <mat-radio-button value="Effort" (change)="onRadioChange($event)">Effort</mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </div>
+            <div fxLayoutAlign="start start" *ngIf="!this.isRadioButtonNone">
+              <!-- <mat-label>Select an option</mat-label> -->
+              <mat-select style="padding: 10px;" formControlName="filterOption2"
+                (selectionChange)="onFilterOption2Changed($event)">
+                <div *ngFor="let option of filterDropdown">
+                  <mat-option value="{{option}}">{{option}}</mat-option>
+                </div>
+              </mat-select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" class="full-width full-height container-content" fxLayoutGap="1rem" fxFlex="82">
+    <div fxLayout="column" class="full-width full-height" fxLayoutGap="1.2rem">
+      <div class="full-width" fxFlex="35">
+        <app-sprint (setCurrentUpdatedItem)="setCurrentUpdatedItem($event)"
+          (setRetrievedMemberModels)="setRetrievedMemberModels($event)"
+          (setIsEditItemComponentRendered)="setIsEditItemComponentRendered($event)"
+          (refreshDevboard)="refreshDevboard()">
+        </app-sprint>
+      </div>
+      <div class="full-width" fxLayout="column" fxLayoutGap="1.2rem" fxFlex="65">
+        <div fxLayoutAlign="end center" fxLayout="row" fxFlex="2">
+          <button (click)=" onAddItemClicked()" mat-button>
+            <div fxLayout="row" fxLayoutGap="0.3rem" fxLayoutAlign="center center">
+              <mat-icon class="add-button">add</mat-icon>
+              <span class="create-item-txt">Create item</span>
+            </div>
+          </button>
+        </div>
+        <div *ngIf="this.items.length !== 0" cdkScrollable cdkDropList [cdkDropListData]="items"
+          (cdkDropListDropped)="drop($event)" fxLayout="column" fxLayout.lt-sm="column" fxLayoutGap="15px"
+          fxLayoutAlign="flex-start" fxFlex="98" class="items-section" #scrollbarDevboard>
+          <ng-container *ngFor="let item of items">
+            <div class="full-width div-card" (contextmenu)="onRightClick($event, item)"
+              (click)="this.matMenuTrigger.closeMenu()">
+              <mat-card cdkDrag (mouseover)=" toggleHover(item.id)" (mouseout)="removeHover()"
+                (click)="onMatCardClicked(item.id)"
+                [ngClass]="{ 'selected-card': selectedItemId === item.id, 'devboard-item' : selectedItemId !== item.id }"
+                class="mat-elevation-z0 item-card">
+                <mat-card-content fxLayout="row">
+                  <div fxLayout="row" fxLayoutGap="0.5rem" class="full-width">
+                    <div>
+                      <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png">
+                      <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png">
+                      <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png">
+                      <!-- <mat-icon class="item-logo" *ngIf="item.type === 'Bug'" fxFlex="2">bug_report</mat-icon>
+                  <mat-icon class="item-logo" *ngIf="item.type === 'Task'" fxFlex="2">task</mat-icon>
+                  <mat-icon class="item-logo" *ngIf="item.type === 'Feature'" fxFlex="2">emoji_events</mat-icon> -->
+                    </div>
+                    <div>
+                      <mat-card-title>{{ item.title }}</mat-card-title>
+                    </div>
+                    <!-- <button class="menu-item-bttn" *ngIf="selectedItemId === item.id" mat-button>
+                  <mat-icon class="menu-item-icon">menu_book</mat-icon>
+                </button> -->
+                  </div>
+                  <!-- <div fxLayout="row">
                 <div fxLayout="row" fxLayoutGap="10px">
                   <span>EstimatedHours: {{ item.estimatedHours }}</span>
                   <span>Priority: {{ item.priority }}</span>
@@ -44,12 +100,48 @@
                   <span>{{ item.state }}</span>
                   <span>Effort: {{ item.effort }}</span>
                 </div>
-              </div>
-            </mat-card-content>
-            <!-- <mat-card-actions> </mat-card-actions> -->
-          </mat-card>
+              </div> -->
+                </mat-card-content>
+                <!-- <mat-card-actions> </mat-card-actions> -->
+              </mat-card>
+            </div>
+          </ng-container>
         </div>
-      </ng-container>
+        <div *ngIf="this.items.length === 0" cdkDropList [cdkDropListData]="items" (cdkDropListDropped)="drop($event)"
+          class="items-section-empty" fxLayoutAlign="center center">
+          <span class="empty-devboard-text">Your devboard is empty!</span>
+        </div>
+        <div style="visibility: hidden; position: fixed;" [style.left]="menuTopLeftPosition.x"
+          [style.top]="menuTopLeftPosition.y" [matMenuTriggerFor]="rightMenu"></div>
+      </div>
+    </div>
+    <div *ngIf="this.isEditItemComponentRendered" class="full-height">
+      <app-item-edit [retrievedMemberModels]="this.retrievedMemberModels" [currentUpdatedItem]="currentUpdatedItem"
+        (updateItem)="updateItem($event)" (closeEditItemComponent)="closeEditItemComponent()">
+      </app-item-edit>
     </div>
   </div>
+  <mat-menu #rightMenu="matMenu" [hasBackdrop]="false">
+    <ng-template matMenuContent let-item="item">
+      <div fxLayout="column">
+        <div fxLayoutAlign="center center"
+          [ngClass]="{ 'selected-menu-option': this.selectedMenuOption === 'Top of Devboard', 'default-menu-option': this.selectedMenuOption !== 'Top of Devboard'}">
+          <button (mouseover)=" toggleButtonHover('Top of Devboard')" (mouseout)="removeButtonHover()" mat-menu-item
+            (click)="onTopOfDevboard(item)"><span class="context-menu-text">Top of
+              Devboard</span></button>
+        </div>
+        <div fxLayoutAlign="center center"
+          [ngClass]="{ 'selected-menu-option': this.selectedMenuOption === 'Bottom of Devboard', 'default-menu-option': this.selectedMenuOption !== 'Bottom of Devboard'}">
+          <button (mouseover)=" toggleButtonHover('Bottom of Devboard')" (mouseout)="removeButtonHover()" mat-menu-item
+            (click)="onBottomOfDevboard(item)"><span class="context-menu-text">Bottom of
+              Devboard</span></button>
+        </div>
+        <div fxLayoutAlign="center center"
+          [ngClass]="{ 'selected-menu-option': this.selectedMenuOption === 'Delete', 'default-menu-option': this.selectedMenuOption !== 'Delete'}">
+          <button (mouseover)=" toggleButtonHover('Delete')" (mouseout)="removeButtonHover()" mat-menu-item
+            (click)="onDeleteItem(item)"><span class="context-menu-text">Delete</span></button>
+        </div>
+      </div>
+    </ng-template>
+  </mat-menu>
 </div>

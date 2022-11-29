@@ -22,10 +22,30 @@ export class AuthService extends DataService {
       .pipe(
         tap(login => {
         if(login.succeeded) {
+          debugger;
           this.setJwt(login.data.accessToken);
         // this.userService.setUser({id: login.id, fullName: login.fullName})
         localStorage.setItem("demo", "demo");
+        localStorage.setItem("ROLE_KEY", login.data.role);
+        localStorage.setItem("EMAIL_KEY", login.data.email);
+        localStorage.setItem("USERNAME_KEY", login.data.username);
          this.router.navigate(['']);
+        }        
+      }));
+  }
+
+  public loginFromMailConfirmation(userCredentials: LoginModel): Observable<ResponseModel<LoginResponseModel>> {
+    return super
+      .post<ResponseModel<LoginResponseModel>>('login', userCredentials)
+      .pipe(
+        tap(login => {
+        if(login.succeeded) {
+          this.setJwt(login.data.accessToken);
+        // this.userService.setUser({id: login.id, fullName: login.fullName})
+        localStorage.setItem("demo", "demo");
+        localStorage.setItem("ROLE_KEY", login.data.role);
+        localStorage.setItem("EMAIL_KEY", login.data.email);
+        localStorage.setItem("USERNAME_KEY", login.data.username);
         }        
       }));
   }
@@ -39,11 +59,16 @@ export class AuthService extends DataService {
 
   public logout(): void {
     sessionStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['account', 'login']);
   }
 
   public isLoggedIn(): boolean {
-    return !!this.getJwt();
+    if(localStorage.getItem("ROLE_KEY") !== null && localStorage.getItem("EMAIL_KEY") !== null && localStorage.getItem("USERNAME_KEY") !== null) {
+      return true;
+    }
+    return false;
+    // return !!this.getJwt();
   }
 
   private setJwt(tokens: string): void {

@@ -1,9 +1,11 @@
-<mat-card class="mat-elevation-z0">
-  <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height">
-    <mat-card-title>
-      <span>Plan Sprint</span>
-    </mat-card-title>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
+<mat-card class="mat-elevation-z0 main-card">
+  <div fxLayout="column" class="full-width full-height">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-card-title>
+        <span>Plan Sprint</span>
+      </mat-card-title>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height" fxLayoutAlign="center center">
       <div fxLayout="column">
         <mat-form-field>
           <mat-label>Title</mat-label>
@@ -37,10 +39,20 @@
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-      </div>
-      <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
+
+        <!-- <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
         <button type="submit" [disabled]="this.form.invalid">Save</button>
         <button type="button" (click)="onCancelClicked()">Cancel</button>
+      </div> -->
+        <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem">
+          <button type="submit" [disabled]="this.form.invalid" mat-button>
+            <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
+              matTooltipDisabled="{{!this.form.invalid}}">
+          </button>
+          <button type="button" (click)="onCancelClicked()" mat-button>
+            <img width=14 src="assets/img/cancel.png">
+          </button>
+        </div>
       </div>
     </form>
   </div>

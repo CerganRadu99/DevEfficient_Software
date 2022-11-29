@@ -1,0 +1,16 @@
+﻿C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\DependencyInjection.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Migrations\20211212161906_Initial-Migration.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Migrations\20211212161906_Initial-Migration.Designer.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Migrations\DevEfficientDbContextModelSnapshot.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\DevEfficientDbContext.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\EntityDatabaseTransaction.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\ItemRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\ItemTypeRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\Repository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\SprintRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\StateRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\TeamMemberRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\Repository\TeamMemberRoleRepository.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Persistence\UnitOfWork.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Services\EmailSenderService.cs
+C:\Users\Radu\Desktop\Back-upRadu\4thYear\CerganRaduMihai_DevEfficient\DevEfficient_ServerSide\Infrastructure\Settings\MailSettings.cs

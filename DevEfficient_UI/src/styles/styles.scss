@@ -161,3 +161,26 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+.snackbar-sprint-style {
+  background: #DD4A48;
+}
+
+.snackbar-current-sprint-style {
+  background: #83BD75;
+}
+
+.snackbar-mail-style {
+  background: #83BD75;
+}
+
+
+  .mat-option-text:hover:not(.mat-option-disabled) {
+   background: #D6E6F2 !important;
+   color: black;
+ }
+
+.mat-option:hover {
+   background: #D6E6F2 !important;
+   color: #D6E6F2 !important;
+ }

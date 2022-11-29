@@ -8,6 +8,12 @@ namespace Application.Interfaces
 {
     public interface ISprintService
     {
-        public Task<int> RegisterSprint(RegisteredSprintDto registeredSprintDto);
+        public Task<Guid> RegisterSprint(RegisteredSprintDto registeredSprintDto);
+        public Task<int> ActivateSprint(RegisteredSprintDto registeredSprintDto);
+        public Task<RetrievedCurrentSprint> GetCurrentActivatedSprint();
+        public Task<int> CloseCurrentActivatedSprint();
+        public List<RetrievedItemDto> GetCurrentSprintItems();
+
+        public Task<int> DeleteCurrentSprint();
     }
 }

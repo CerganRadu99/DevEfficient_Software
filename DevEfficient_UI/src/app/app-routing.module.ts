@@ -24,11 +24,19 @@ const routes: Routes = [
         path: 'devboard',
         loadChildren: () =>
           import('./modules/devboard/devboard.module').then((m) => m.DevboardModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'sprint',
+        loadChildren: () =>
+          import('./modules/sprint/sprint.module').then((m) => m.SprintModule),
+          canActivate: [AuthGuard],
       },
       {
         path: 'management',
         loadChildren: () =>
           import('./modules/management/management.module').then((m) => m.ManagementModule),
+          canActivate: [AuthGuard],
       },
       {
         path: 'item',
@@ -36,9 +44,14 @@ const routes: Routes = [
           import('./modules/item/item.module').then((m) => m.ItemModule),
       },
       {
+        path: 'mailconfirmation',
+        loadChildren: () =>
+          import('./modules/mail-confirmation/mailconfirmation.module').then((m) => m.MailConfirmationModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home'
+        redirectTo: 'devboard'
       }
 ];
 

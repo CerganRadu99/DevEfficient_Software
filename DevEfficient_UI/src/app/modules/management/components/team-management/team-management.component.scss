@@ -5,3 +5,26 @@ table {
 .team-management-actions {
   width: 80%;
 }
+
+// .users-table {
+//   background-color: white;
+// }
+
+.mat-table {
+  background-color: #F9F6F7;
+}
+
+th {
+  color: black;
+}
+
+td {
+  color: black;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: white !important;
+  padding: 0px !important;
+}
+
+

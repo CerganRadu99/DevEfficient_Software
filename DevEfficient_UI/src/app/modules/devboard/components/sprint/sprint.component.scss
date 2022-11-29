@@ -1,9 +1,77 @@
-.selected-card {
-  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14), 0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;
-  transform: translate3d(0, 0, 0);
-  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 .drop-zone {
-  min-height: 50px;
-  color: grey;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23BDC7C9FF' stroke-width='2' stroke-dasharray='6' stroke-dashoffset='10' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.text-drop-zone {
+  color: black;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+}
+
+.items-section {
+  white-space: nowrap;
+  overflow-y: auto;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+.items-section::-webkit-scrollbar-thumb {
+  background: #8CC0DE;
+  border-radius: 15%;
+}
+
+.items-section::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.5rem;
+  background-color: #aaa; /* or add it to the track */
+  border-radius: 15%;
+}
+
+.main-card {
+  background-color: #F9F6F7;
+}
+
+.activate-sprint-bttn:disabled {
+  background-color: #F6F5F5;
+}
+
+.activate-sprint-bttn {
+  background-color: #8CC0DE;
+}
+
+mat-card-actions {
+  padding-right: 0.5rem;
+}
+
+.activate-sprint-text{
+  color: white;
+}
+.activate-sprint-text-disabled{
+  color: #8CC0DE;
+}
+
+.mat-button, 
+.mat-flat-button, 
+.mat-icon-button, 
+.mat-stroked-button { 
+  border-radius: 0px; 
+}
+
+.sprint-item {
+  background-color: white;
+  border: 1px solid #C2CFD8;
+}
+
+mat-card-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+}
+
+mat-card {
+  padding: 6px !important;
+}
+
+.div-card {
+  height: 30px;
 }

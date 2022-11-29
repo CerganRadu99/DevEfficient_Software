@@ -1,12 +1,11 @@
 ﻿using Domain.Core;
+using Domain.Dtos;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using Domain.Dtos;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Repository
 {
@@ -14,19 +13,116 @@ namespace Infrastructure.Persistence.Repository
     {
         public ItemRepository(DevEfficientDbContext dbContext) : base(dbContext) { }
 
-        public async Task<IEnumerable<RetrievedItemDto>> GetFullItems()
+        public async Task<IEnumerable<RetrievedItemDto>> GetFullItems(GetItemsBodyModel getItemsBodyModel)
         {
-            return await this._dbSet.Include(it => it.State).Include(it => it.ItemType)
-                .Select(item => new RetrievedItemDto
+            if(getItemsBodyModel.SearchTerm == "")
+            {
+                if (getItemsBodyModel.FilterField == "" && getItemsBodyModel.FilterValue == "")
                 {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Priority = item.Priority,
-                    EstimatedHours = item.EstimatedHours,
-                    Effort = item.Effort,
-                    State = item.State.Name,
-                    Type = item.ItemType.Name
-                }).ToListAsync();
+                    return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null)
+                     .Select(item => new RetrievedItemDto
+                     {
+                         Id = item.Id,
+                         Title = item.Title,
+                         Priority = item.Priority,
+                         EstimatedHours = item.EstimatedHours,
+                         Effort = item.Effort,
+                         State = item.State.Name,
+                         Type = item.ItemType.Name
+                     }).ToListAsync();
+                }
+                else
+                {
+                    switch(getItemsBodyModel.FilterField)
+                    {
+                        case "Type":
+                            return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null).Where(it => it.ItemType.Name.Equals(getItemsBodyModel.FilterValue))
+                             .Select(item => new RetrievedItemDto
+                             {
+                                 Id = item.Id,
+                                 Title = item.Title,
+                                 Priority = item.Priority,
+                                 EstimatedHours = item.EstimatedHours,
+                                 Effort = item.Effort,
+                                 State = item.State.Name,
+                                 Type = item.ItemType.Name
+                             }).ToListAsync();
+                        case "Priority":
+                            return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null).Where(it => it.Priority.Equals(getItemsBodyModel.FilterValue))
+                             .Select(item => new RetrievedItemDto
+                             {
+                                 Id = item.Id,
+                                 Title = item.Title,
+                                 Priority = item.Priority,
+                                 EstimatedHours = item.EstimatedHours,
+                                 Effort = item.Effort,
+                                 State = item.State.Name,
+                                 Type = item.ItemType.Name
+                             }).ToListAsync();
+                        case "State":
+                            return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null).Where(it => it.State.Name.Equals(getItemsBodyModel.FilterValue))
+                             .Select(item => new RetrievedItemDto
+                             {
+                                 Id = item.Id,
+                                 Title = item.Title,
+                                 Priority = item.Priority,
+                                 EstimatedHours = item.EstimatedHours,
+                                 Effort = item.Effort,
+                                 State = item.State.Name,
+                                 Type = item.ItemType.Name
+                             }).ToListAsync();
+                        case "Effort":
+                            return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null).Where(it => it.Effort.Equals(getItemsBodyModel.FilterValue))
+                             .Select(item => new RetrievedItemDto
+                             {
+                                 Id = item.Id,
+                                 Title = item.Title,
+                                 Priority = item.Priority,
+                                 EstimatedHours = item.EstimatedHours,
+                                 Effort = item.Effort,
+                                 State = item.State.Name,
+                                 Type = item.ItemType.Name
+                             }).ToListAsync();
+                        default:
+                            return null;
+                    }
+                }
+            }
+            else
+            {
+                if(getItemsBodyModel.FilterField == "" && getItemsBodyModel.FilterValue == "")
+                {
+                    return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null)
+                        .Where(it => it.Title.ToLower().Contains(getItemsBodyModel.SearchTerm.ToLower()))
+                         .Select(item => new RetrievedItemDto
+                         {
+                             Id = item.Id,
+                             Title = item.Title,
+                             Priority = item.Priority,
+                             EstimatedHours = item.EstimatedHours,
+                             Effort = item.Effort,
+                             State = item.State.Name,
+                             Type = item.ItemType.Name
+                         }).ToListAsync();
+                }
+                else
+                {
+                    return await this._dbSet.Include(it => it.State).Include(it => it.ItemType).Where(it => it.SprintId == null)
+                        .Where(it => it.GetType().GetProperty(getItemsBodyModel.FilterField).Name.Equals(getItemsBodyModel.FilterValue))
+                         .Select(item => new RetrievedItemDto
+                         {
+                             Id = item.Id,
+                             Title = item.Title,
+                             Priority = item.Priority,
+                             EstimatedHours = item.EstimatedHours,
+                             Effort = item.Effort,
+                             State = item.State.Name,
+                             Type = item.ItemType.Name
+                         }).ToListAsync();
+                }
+
+            }
+          
         }
 
         public async Task<ItemDetailsDto> GetFullItem(Guid itemId)

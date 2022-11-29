@@ -1,104 +1,208 @@
-<mat-card class="mat-elevation-z0">
-  <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height">
-    <mat-card-title>
+<div class="main-container">
+  <mat-card class="mat-elevation-z0 main-card">
+    <!-- <mat-card-title>
       <div fxLayout="row" fxLayoutAlign="center center">
         <span fxFlex="90">Update Item</span>
-        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Bug'">bug_report</mat-icon>
-        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Task'">task</mat-icon>
-        <mat-icon fxFlex="10" *ngIf="actualItemType === 'Feature'">emoji_events</mat-icon>
+        <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
+        <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
+        <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
       </div>
-    </mat-card-title>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
-      <div fxLayout="column">
-        <mat-form-field>
-          <mat-label>Title</mat-label>
-          <input matInput formControlName="title" placeholder="Title" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>EstimatedHours</mat-label>
-          <input matInput formControlName="estimatedHours" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Effort</mat-label>
-          <input matInput formControlName="estimatedEffort" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Priority</mat-label>
-          <mat-select formControlName="priority">
-            <mat-option *ngFor="let priority of priorities" [value]="priority">
-              {{ priority }}
-            </mat-option>
-          </mat-select>
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>State</mat-label>
-          <mat-select formControlName="state">
-            <mat-select-trigger> {{ state.value }}</mat-select-trigger>
-            <mat-option *ngFor="let itemState of itemStates" [value]="itemState">
-              {{ itemState }}
-              <mat-icon class="todo-state-icon" *ngIf="itemState === 'ToDo'">fiber_manual_record</mat-icon>
-              <mat-icon class="inprogress-state-icon" *ngIf="itemState === 'InProgress'">fiber_manual_record</mat-icon>
-              <mat-icon class="done-state-icon" *ngIf="itemState === 'Done'">fiber_manual_record</mat-icon>
-            </mat-option>
-          </mat-select>
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field *ngIf="actualItemState === 'Done'">
-          <mat-label>ActualHours</mat-label>
-          <input matInput formControlName="actualHours" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Type</mat-label>
-          <mat-select formControlName="type">
-            <mat-select-trigger> {{ type.value }}</mat-select-trigger>
-            <mat-option *ngFor="let itemType of itemTypes" [value]="itemType">
-              {{ itemType }}
-              <mat-icon *ngIf="itemType === 'Bug'">bug_report</mat-icon>
-              <mat-icon *ngIf="itemType === 'Task'">task</mat-icon>
-              <mat-icon *ngIf="itemType === 'Feature'">emoji_events</mat-icon>
-            </mat-option>
-          </mat-select>
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Assigned</mat-label>
-          <mat-select formControlName="assigned">
-            <mat-option *ngFor="let member of data.teamMembers" [value]="member.name">
-              {{ member.name }}
-            </mat-option>
-          </mat-select>
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Sprint</mat-label>
-          <input matInput formControlName="sprint" />
-        </mat-form-field>
-        <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
-          <button type="submit" [disabled]="this.form.invalid">Save</button>
-          <button type="button" (click)="onCancelClicked()">Cancel</button>
+    </mat-card-title> -->
+    <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height" fxLayoutGap="0.5rem">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
+        <div fxLayout="column" class="full-height">
+          <div fxLayout="column" fxLayoutGap="0.1rem" class="full-height">
+            <!-- <div fxLayoutAlign="end center">
+              <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
+              <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
+              <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
+            </div> -->
+            <div class="item-introduction"
+              [ngClass]="{'to-do-class': this.state.value === 'ToDo', 'in-progress-class': this.state.value === 'InProgress', 'done-class': this.state.value === 'Done'}"
+              fxFlex="20" fxLayout="column">
+              <mat-form-field class="full-width" fxFlex="50">
+                <div fxLayout="row" fxLayoutGap="0.9rem">
+                  <!-- <mat-label>Title</mat-label> -->
+                  <input matInput formControlName="title" placeholder="Title" />
+                  <div fxLayoutAlign="end center">
+                    <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
+                    <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
+                    <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
+                  </div>
+                </div>
+                <mat-error>
+                  {{ 'validation.fieldRequired' | translate }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field fxFlex="50">
+                <div fxLayout="row" fxLayoutGap="0.9rem">
+                  <mat-label>State</mat-label>
+                  <mat-select formControlName="state">
+                    <mat-select-trigger> {{ state.value }}</mat-select-trigger>
+                    <mat-option *ngFor="let itemState of itemStates" [value]="itemState">
+                      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem" class="full-width">
+                        <div>
+                          {{ itemState }}
+                        </div>
+                        <div fxLayoutAlign="start center">
+                          <mat-icon class="todo-state-icon" *ngIf="itemState === 'ToDo'">fiber_manual_record
+                          </mat-icon>
+                          <mat-icon class="inprogress-state-icon" *ngIf="itemState === 'InProgress'">
+                            fiber_manual_record
+                          </mat-icon>
+                          <mat-icon class="done-state-icon" *ngIf="itemState === 'Done'">fiber_manual_record
+                          </mat-icon>
+                        </div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                </div>
+                <mat-error>
+                  {{ 'validation.fieldRequired' | translate }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <mat-expansion-panel
+              [ngClass]="{'item-details-panel-opened': this.panelOpenState === true, 'item-details-panel-closed': this.panelOpenState === false}"
+              class="mat-elevation-z0" (opened)="this.panelOpenState = true" (closed)="this.panelOpenState = false"
+              fxLayout="column">
+              <mat-expansion-panel-header
+                [ngClass]="{'panel-header-class-opened': this.panelOpenState === true, 'panel-header-class-closed': this.panelOpenState === false}">
+                <mat-panel-title>
+                  Details
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <div *ngIf="this.panelOpenState === false" style="width: 379px;">
+
+              </div>
+              <div fxLayout="column" fxFlex="90" *ngIf="this.panelOpenState === true" fxFlex="72">
+                <div fxLayout="row" fxLayoutGap="1rem">
+                  <mat-form-field fxFlex="50">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>EstimatedHours</mat-label>
+                      <input matInput formControlName="estimatedHours" />
+                    </div>
+                    <mat-error>
+                      {{ 'validation.fieldRequired' | translate }}
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field fxFlex="50">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>Effort</mat-label>
+                      <input matInput formControlName="estimatedEffort" />
+                    </div>
+                    <mat-error>
+                      {{ 'validation.fieldRequired' | translate }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                  <mat-form-field fxFlex="60">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>Priority</mat-label>
+                      <div fxLayout="row" class="full-width">
+                        <mat-select formControlName="priority">
+                          <mat-option *ngFor="let priority of priorities" [value]="priority">
+                            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem" class="full-width">
+                              <div>
+                                <span>{{ priority }}</span>
+                              </div>
+                              <div fxLayoutAlign="start center">
+                                <img width=20 *ngIf="priority === 'Low'" src="assets/img/low-priority.png">
+                                <img width=20 *ngIf="priority === 'Medium'" src="assets/img/priority1.png">
+                                <img width=20 *ngIf="priority === 'High'" src="assets/img/prioritize.png">
+                              </div>
+                            </div>
+                          </mat-option>
+                        </mat-select>
+                        <img width=20 *ngIf="this.priority.value === 'Low'" src="assets/img/low-priority.png">
+                        <img width=20 *ngIf="this.priority.value === 'Medium'" src="assets/img/priority1.png">
+                        <img width=20 *ngIf="this.priority.value === 'High'" src="assets/img/prioritize.png">
+                      </div>
+                    </div>
+                    <mat-error>
+                      {{ 'validation.fieldRequired' | translate }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                  <mat-form-field *ngIf="actualItemState === 'Done'" fxFlex="50">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>ActualHours</mat-label>
+                      <input matInput formControlName="actualHours" />
+                    </div>
+                    <mat-error>
+                      {{ 'validation.fieldRequired' | translate }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                  <mat-form-field fxFlex="60">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>Type</mat-label>
+                      <div fxLayout="row" class="full-width">
+                        <mat-select formControlName="type">
+                          <mat-select-trigger> {{ type.value }}</mat-select-trigger>
+                          <mat-option *ngFor="let itemType of itemTypes" [value]="itemType">
+                            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem" class="full-width">
+                              <div>
+                                {{ itemType }}
+                              </div>
+                              <div fxLayoutAlign="start center">
+                                <img width=20 *ngIf="itemType === 'Bug'" src="assets/img/bug.png">
+                                <img width=20 *ngIf="itemType === 'Task'" src="assets/img/administration.png">
+                                <img width=20 *ngIf="itemType === 'Feature'" src="assets/img/trophyy.png">
+                              </div>
+                            </div>
+                          </mat-option>
+                        </mat-select>
+                        <img width=20 *ngIf="this.type.value === 'Bug'" src="assets/img/bug.png">
+                        <img width=20 *ngIf="this.type.value === 'Task'" src="assets/img/administration.png">
+                        <img width=20 *ngIf="this.type.value === 'Feature'" src="assets/img/trophyy.png">
+                      </div>
+                    </div>
+                    <mat-error>
+                      {{ 'validation.fieldRequired' | translate }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                  <mat-form-field fxFlex="60">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>Assigned</mat-label>
+                      <mat-select formControlName="assigned">
+                        <mat-option *ngFor="let member of this.retrievedMemberModels" [value]="member.name">
+                          {{ member.name }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <!-- <div fxLayout="row">
+                  <mat-form-field fxFlex="50">
+                    <div fxLayout="row" fxLayoutGap="0.9rem">
+                      <mat-label>Sprint</mat-label>
+                      <input matInput formControlName="sprint" />
+                    </div>
+                  </mat-form-field>
+                </div> -->
+              </div>
+            </mat-expansion-panel>
+            <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem" fxFlex="8" class="actions-section">
+              <button type="submit" [disabled]="this.form.invalid" mat-button>
+                <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
+                  matTooltipDisabled="{{!this.form.invalid}}">
+              </button>
+              <button type="button" (click)="onCancelClicked()" mat-button>
+                <img width=14 src="assets/img/cancel.png">
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-</mat-card>
+      </form>
+    </div>
+  </mat-card>
+</div>

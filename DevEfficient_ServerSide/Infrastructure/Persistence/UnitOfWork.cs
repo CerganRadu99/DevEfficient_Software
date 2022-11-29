@@ -26,7 +26,7 @@ namespace Infrastructure.Persistence
         public IItemRepository Items { get; }
         public IItemTypeRepository ItemTypes { get; }
         public ITeamMemberRoleRepository TeamMemberRoles { get; }
-        public IRepository<Sprint> Sprints { get; }
+        public ISprintRepository Sprints { get; }
         public IStateRepository States { get; }
         public IRepository<Team> Teams { get; }
         public ITeamMemberRepository TeamMembers { get; }

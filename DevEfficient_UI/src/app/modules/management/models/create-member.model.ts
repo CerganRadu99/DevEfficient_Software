@@ -1,5 +1,5 @@
 export interface CreateMemberModel {
-    name: string;
+    // name: string;
     email: string;
-    role: string;
+    // role: string;
 }
