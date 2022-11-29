@@ -18,13 +18,6 @@ namespace Infrastructure.Persistence
         }
 
         private readonly IConfiguration _configuration;
-        //public virtual DbSet<Item> Items { get; set; }
-        //public virtual DbSet<ItemType> ItemTypes { get; set; }
-        //public virtual DbSet<TeamMemberRole> TeamMemberRoles { get; set; }
-        //public virtual DbSet<Sprint> Sprints { get; set; }
-        //public virtual DbSet<State> States { get; set; }
-        //public virtual DbSet<Team> Teams { get; set; }
-        //public virtual DbSet<TeamMember> TeamMembers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

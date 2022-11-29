@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Infrastructure.Persistence
 {
-    public class EntityDatabaseTransaction : IDatabaseTransaction
+    public sealed class EntityDatabaseTransaction : IDatabaseTransaction
     {
-        private IDbContextTransaction _transaction;
+        private readonly IDbContextTransaction _transaction;
 
         public EntityDatabaseTransaction(DevEfficientDbContext context)
         {
@@ -22,6 +22,7 @@ namespace Infrastructure.Persistence
         public void Dispose()
         {
             _transaction.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public void Rollback()

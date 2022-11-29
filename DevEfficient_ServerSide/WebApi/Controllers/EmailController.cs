@@ -28,6 +28,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }

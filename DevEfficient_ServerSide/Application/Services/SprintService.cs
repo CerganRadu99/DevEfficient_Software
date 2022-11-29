@@ -76,7 +76,7 @@ namespace Application.Services
                     }
                     return await Task.FromResult(Guid.Empty);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     transaction.Rollback();
                     return await Task.FromResult(Guid.Empty);

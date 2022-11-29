@@ -34,7 +34,7 @@ namespace Infrastructure.Services
             smtp.Disconnect(true);
         }
 
-        public async void SendEmail(string fromEmail, string toEmail, string subject, string body, DateTime date, string signature, List<string> distributionList)
+        public void SendEmail(string fromEmail, string toEmail, string subject, string body, DateTime date, string signature, List<string> distributionList)
         {
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(fromEmail);

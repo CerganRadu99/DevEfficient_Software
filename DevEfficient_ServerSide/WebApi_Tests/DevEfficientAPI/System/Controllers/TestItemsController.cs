@@ -33,7 +33,9 @@ namespace DevEfficientAPI.System.Controllers
             var result = itemsController.GetItems(requestBody);
 
             //Assert
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var items = result.Value.Data.ToList();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Assert.True(items.Count == 3);
         }
     }

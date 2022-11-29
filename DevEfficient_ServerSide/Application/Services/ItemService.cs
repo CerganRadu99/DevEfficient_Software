@@ -21,11 +21,11 @@ namespace Application.Services
             _memoryCache = memoryCache;
         }
 
-        public async Task<IEnumerable<RetrievedItemDto>> GetAll(GetItemsBodyModel getItemsBodyModel)
+        public async Task<IEnumerable<RetrievedItemDto>> GetAll(GetItemsBodyModel getItemsPostModel)
         {
 
-            var items = await _unitOfWork.Items.GetFullItems(getItemsBodyModel);
-            List<Guid> itemsOrder = new List<Guid>();
+            var items = await _unitOfWork.Items.GetFullItems(getItemsPostModel);
+            List<Guid> itemsOrder;
             if(_memoryCache.TryGetValue(ITEMS_ORDER_CACHE_KEY, out itemsOrder))
             {
                 List<RetrievedItemDto> orderedItems = new List<RetrievedItemDto>();
@@ -165,15 +165,15 @@ namespace Application.Services
                         isTransactionSucceeded = false;
                     }
                     currentSprint.TotalEstimatedHours += currentItem.EstimatedHours;
-                    var isCurrentSprintUpdated = await _unitOfWork.Sprints.Update(currentSprint);
-                    if(isTransactionSucceeded == true)
+                    await _unitOfWork.Sprints.Update(currentSprint);
+                    if(isTransactionSucceeded)
                     {
                         transaction.Commit();
                         return await Task.FromResult(1);
                     }
                     return await Task.FromResult(0);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     transaction.Rollback();
                     return await Task.FromResult(0);

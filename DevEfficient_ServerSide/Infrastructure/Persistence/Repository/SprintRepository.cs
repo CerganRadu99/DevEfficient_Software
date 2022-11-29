@@ -50,7 +50,7 @@ namespace Infrastructure.Persistence.Repository
 
         public async Task<Sprint> GetCurrentSprint()
         {
-            var currentSprint = this._dbSet.Include(sprint => sprint.Items).ThenInclude(it => it.State).Include(sprint => sprint.Items).ThenInclude(it => it.ItemType).FirstOrDefault(sprint => sprint.IsActive == false && sprint.IsClosed == false);
+            var currentSprint = this._dbSet.Include(sprint => sprint.Items).ThenInclude(it => it.State).Include(sprint => sprint.Items).ThenInclude(it => it.ItemType).FirstOrDefault(sprint => !sprint.IsActive && !sprint.IsClosed);
             if (currentSprint == null)
             {
                 return await Task.FromResult<Sprint>(null);
@@ -59,10 +59,10 @@ namespace Infrastructure.Persistence.Repository
         }
         public List<RetrievedItemDto> GetCurrentSprintItems()
         {
-            var currentSprint = this._dbSet.Include(sprint => sprint.Items).ThenInclude(it => it.State).Include(sprint => sprint.Items).ThenInclude(it => it.ItemType).FirstOrDefault(sprint => sprint.IsActive == false && sprint.IsClosed == false);
+            var currentSprint = this._dbSet.Include(sprint => sprint.Items).ThenInclude(it => it.State).Include(sprint => sprint.Items).ThenInclude(it => it.ItemType).FirstOrDefault(sprint => !sprint.IsActive && !sprint.IsClosed);
             if (currentSprint == null)
             {
-                return null;
+                return new List<RetrievedItemDto>();
             }
             List<RetrievedItemDto> retrievedItems = new List<RetrievedItemDto>();
             foreach (var item in currentSprint.Items)
