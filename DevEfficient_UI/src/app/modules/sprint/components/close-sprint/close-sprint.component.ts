@@ -1,7 +1,6 @@
 import { Component, Inject, OnDestroy } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { Subject, takeUntil } from "rxjs";
+import { Subject } from "rxjs";
 import { SprintService } from "src/app/modules/core/services/sprint.service";
 
 @Component({

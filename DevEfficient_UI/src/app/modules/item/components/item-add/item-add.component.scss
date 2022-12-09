@@ -8,16 +8,19 @@ mat-form-field {
 .todo-state-icon {
   @extend .state-icon;
   color: grey;
+  color: rgba(127, 132, 135, 0.9);
 }
 
 .inprogress-state-icon {
   @extend .state-icon;
   color: blue;
+  color: rgba(154, 220, 255, 0.9);
 }
 
 .done-state-icon {
   @extend .state-icon;
   color: green;
+  color: rgba(180, 225, 151, 0.9);
 }
 
 .main-card {
@@ -52,19 +55,6 @@ input {
 
 ::ng-deep .mat-select-panel {
   background-color: white;
-}
-
-.todo-state-icon {
-  color: rgba(127, 132, 135, 0.9);
-
-}
-
-.inprogress-state-icon {
-  color: rgba(154, 220, 255, 0.9);
-}
-
-.done-state-icon {
-  color: rgba(180, 225, 151, 0.9);
 }
 
 mat-icon {

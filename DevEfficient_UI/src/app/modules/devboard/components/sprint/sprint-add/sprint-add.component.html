@@ -39,18 +39,13 @@
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-
-        <!-- <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
-        <button type="submit" [disabled]="this.form.invalid">Save</button>
-        <button type="button" (click)="onCancelClicked()">Cancel</button>
-      </div> -->
         <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem">
           <button type="submit" [disabled]="this.form.invalid" mat-button>
             <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
-              matTooltipDisabled="{{!this.form.invalid}}">
+              matTooltipDisabled="{{!this.form.invalid}}" alt="alt_image">
           </button>
           <button type="button" (click)="onCancelClicked()" mat-button>
-            <img width=14 src="assets/img/cancel.png">
+            <img width=14 src="assets/img/cancel.png" alt="alt_image">
           </button>
         </div>
       </div>

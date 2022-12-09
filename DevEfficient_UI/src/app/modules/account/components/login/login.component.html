@@ -1,18 +1,11 @@
-<!-- <img src="assets/img/DevEfficient.jpg" alt="DevEfficient Photo" /> -->
 <form #form="ngForm">
   <div class="container">
     <div id="username">
       <label for="uname">
-        <b>{{ 'username' | translate }}</b>
+        <strong>{{ 'username' | translate }}</strong>
       </label>
-      <input
-        type="text"
-        [placeholder]="'username' | translate"
-        name="uname"
-        #uname="ngModel"
-        [(ngModel)]="loginModel.username"
-        required
-      />
+      <input type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
+        [(ngModel)]="loginModel.username" required />
       <div *ngIf="uname.touched && uname.invalid">
         <div class="error" *ngIf="uname.errors?.required">
           {{ 'validation.fieldRequired' | translate }}
@@ -21,16 +14,10 @@
     </div>
     <div id="password">
       <label for="psw">
-        <b>{{ 'password' | translate }}</b>
+        <strong>{{ 'password' | translate }}</strong>
       </label>
-      <input
-        type="password"
-        [placeholder]="'password' | translate"
-        name="psw"
-        #psw="ngModel"
-        [(ngModel)]="loginModel.password"
-        required
-      />
+      <input type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
+        [(ngModel)]="loginModel.password" required />
       <div *ngIf="psw.touched && psw.invalid">
         <div class="error" *ngIf="psw.errors?.required">
           {{ 'passwordRequired' | translate }}

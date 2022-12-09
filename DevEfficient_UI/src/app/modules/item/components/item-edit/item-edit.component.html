@@ -1,33 +1,19 @@
 <div class="main-container">
   <mat-card class="mat-elevation-z0 main-card">
-    <!-- <mat-card-title>
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <span fxFlex="90">Update Item</span>
-        <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
-        <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
-        <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
-      </div>
-    </mat-card-title> -->
     <div fxLayout="column" fxLayoutAlign="center center" class="full-width full-height" fxLayoutGap="0.5rem">
       <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
         <div fxLayout="column" class="full-height">
           <div fxLayout="column" fxLayoutGap="0.1rem" class="full-height">
-            <!-- <div fxLayoutAlign="end center">
-              <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
-              <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
-              <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
-            </div> -->
             <div class="item-introduction"
               [ngClass]="{'to-do-class': this.state.value === 'ToDo', 'in-progress-class': this.state.value === 'InProgress', 'done-class': this.state.value === 'Done'}"
               fxFlex="20" fxLayout="column">
               <mat-form-field class="full-width" fxFlex="50">
                 <div fxLayout="row" fxLayoutGap="0.9rem">
-                  <!-- <mat-label>Title</mat-label> -->
                   <input matInput formControlName="title" placeholder="Title" />
                   <div fxLayoutAlign="end center">
-                    <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png">
-                    <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png">
-                    <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png">
+                    <img width=25 *ngIf="actualItemType === 'Bug'" src="assets/img/bug.png" alt="alt_image">
+                    <img width=25 *ngIf="actualItemType === 'Task'" src="assets/img/administration.png" alt="alt_image">
+                    <img width=25 *ngIf="actualItemType === 'Feature'" src="assets/img/trophyy.png" alt="alt_image">
                   </div>
                 </div>
                 <mat-error>
@@ -71,9 +57,6 @@
                 <mat-panel-title>
                   Details
                 </mat-panel-title>
-                <!-- <mat-panel-description>
-                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description> -->
               </mat-expansion-panel-header>
               <div *ngIf="this.panelOpenState === false" style="width: 379px;">
 
@@ -111,16 +94,22 @@
                                 <span>{{ priority }}</span>
                               </div>
                               <div fxLayoutAlign="start center">
-                                <img width=20 *ngIf="priority === 'Low'" src="assets/img/low-priority.png">
-                                <img width=20 *ngIf="priority === 'Medium'" src="assets/img/priority1.png">
-                                <img width=20 *ngIf="priority === 'High'" src="assets/img/prioritize.png">
+                                <img width=20 *ngIf="priority === 'Low'" src="assets/img/low-priority.png"
+                                  alt="alt_image">
+                                <img width=20 *ngIf="priority === 'Medium'" src="assets/img/priority1.png"
+                                  alt="alt_image">
+                                <img width=20 *ngIf="priority === 'High'" src="assets/img/prioritize.png"
+                                  alt="alt_image">
                               </div>
                             </div>
                           </mat-option>
                         </mat-select>
-                        <img width=20 *ngIf="this.priority.value === 'Low'" src="assets/img/low-priority.png">
-                        <img width=20 *ngIf="this.priority.value === 'Medium'" src="assets/img/priority1.png">
-                        <img width=20 *ngIf="this.priority.value === 'High'" src="assets/img/prioritize.png">
+                        <img width=20 *ngIf="this.priority.value === 'Low'" src="assets/img/low-priority.png"
+                          alt="alt_image">
+                        <img width=20 *ngIf="this.priority.value === 'Medium'" src="assets/img/priority1.png"
+                          alt="alt_image">
+                        <img width=20 *ngIf="this.priority.value === 'High'" src="assets/img/prioritize.png"
+                          alt="alt_image">
                       </div>
                     </div>
                     <mat-error>
@@ -152,16 +141,20 @@
                                 {{ itemType }}
                               </div>
                               <div fxLayoutAlign="start center">
-                                <img width=20 *ngIf="itemType === 'Bug'" src="assets/img/bug.png">
-                                <img width=20 *ngIf="itemType === 'Task'" src="assets/img/administration.png">
-                                <img width=20 *ngIf="itemType === 'Feature'" src="assets/img/trophyy.png">
+                                <img width=20 *ngIf="itemType === 'Bug'" src="assets/img/bug.png" alt="alt_image">
+                                <img width=20 *ngIf="itemType === 'Task'" src="assets/img/administration.png"
+                                  alt="alt_image">
+                                <img width=20 *ngIf="itemType === 'Feature'" src="assets/img/trophyy.png"
+                                  alt="alt_image">
                               </div>
                             </div>
                           </mat-option>
                         </mat-select>
-                        <img width=20 *ngIf="this.type.value === 'Bug'" src="assets/img/bug.png">
-                        <img width=20 *ngIf="this.type.value === 'Task'" src="assets/img/administration.png">
-                        <img width=20 *ngIf="this.type.value === 'Feature'" src="assets/img/trophyy.png">
+                        <img width=20 *ngIf="this.type.value === 'Bug'" src="assets/img/bug.png" alt="alt_image">
+                        <img width=20 *ngIf="this.type.value === 'Task'" src="assets/img/administration.png"
+                          alt="alt_image">
+                        <img width=20 *ngIf="this.type.value === 'Feature'" src="assets/img/trophyy.png"
+                          alt="alt_image">
                       </div>
                     </div>
                     <mat-error>
@@ -181,23 +174,15 @@
                     </div>
                   </mat-form-field>
                 </div>
-                <!-- <div fxLayout="row">
-                  <mat-form-field fxFlex="50">
-                    <div fxLayout="row" fxLayoutGap="0.9rem">
-                      <mat-label>Sprint</mat-label>
-                      <input matInput formControlName="sprint" />
-                    </div>
-                  </mat-form-field>
-                </div> -->
               </div>
             </mat-expansion-panel>
             <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem" fxFlex="8" class="actions-section">
               <button type="submit" [disabled]="this.form.invalid" mat-button>
                 <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
-                  matTooltipDisabled="{{!this.form.invalid}}">
+                  matTooltipDisabled="{{!this.form.invalid}}" alt="alt_image">
               </button>
               <button type="button" (click)="onCancelClicked()" mat-button>
-                <img width=14 src="assets/img/cancel.png">
+                <img width=14 src="assets/img/cancel.png" alt="alt_image">
               </button>
             </div>
           </div>

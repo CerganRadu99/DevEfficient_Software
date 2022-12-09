@@ -157,6 +157,7 @@ input {
   box-shadow: none !important;
   border-color: transparent !important;
   background-color: rgba(249, 246, 247, 0.2);
+  color: black;
 }
 
 ::placeholder {
@@ -192,10 +193,6 @@ mat-select-trigger {
 }
 
 ::ng-deep .mat-select-value-text {
-  color: black;
-}
-
-input {
   color: black;
 }
 

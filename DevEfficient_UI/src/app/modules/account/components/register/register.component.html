@@ -2,7 +2,7 @@
   <div class="container">
     <div id="username">
       <label for="uname">
-        <b>{{ 'username' | translate }}</b>
+        <strong>{{ 'username' | translate }}</strong>
       </label>
       <input type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
         [(ngModel)]="registerModel.username" required />
@@ -14,7 +14,7 @@
     </div>
     <div id="email">
       <label for="email">
-        <b>{{ 'E-mail' | translate }}</b>
+        <strong>{{ 'E-mail' | translate }}</strong>
       </label>
       <input type="text" [placeholder]="'E-mail' | translate" name="email" #email="ngModel"
         [(ngModel)]="registerModel.email" required email />
@@ -29,7 +29,7 @@
     </div>
     <div id="password">
       <label for="psw">
-        <b>{{ 'password' | translate }}</b>
+        <strong>{{ 'password' | translate }}</strong>
       </label>
       <input type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
         [(ngModel)]="registerModel.passwordHash" required passwordPattern />
@@ -44,7 +44,7 @@
     </div>
     <div id="confirmPassword">
       <label for="cpsw">
-        <b>{{ 'confirmPassword' | translate }}</b>
+        <strong>{{ 'confirmPassword' | translate }}</strong>
       </label>
       <input type="password" [placeholder]="'confirmPassword' | translate" name="cpsw" #cpsw="ngModel"
         [(ngModel)]="registerModel.confirmPassword" required />
@@ -59,7 +59,7 @@
     </div>
     <div id="fullName">
       <label for="fname">
-        <b>{{ 'fullName' | translate }}</b>
+        <strong>{{ 'fullName' | translate }}</strong>
       </label>
       <input type="text" [placeholder]="'fullName' | translate" name="fname" #fname="ngModel"
         [(ngModel)]="registerModel.fullName" required />

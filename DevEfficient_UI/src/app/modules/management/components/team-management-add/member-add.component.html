@@ -7,13 +7,6 @@
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-width full-height">
       <div fxLayout="column">
-        <!-- <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name" placeholder="Name" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field> -->
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" />
@@ -21,24 +14,13 @@
             {{ 'validation.fieldRequired' | translate }}
           </mat-error>
         </mat-form-field>
-        <!-- <mat-form-field>
-          <mat-label>Role</mat-label>
-          <input matInput formControlName="role" placeholder="Role" />
-          <mat-error>
-            {{ 'validation.fieldRequired' | translate }}
-          </mat-error>
-        </mat-form-field> -->
-        <!-- <div fxLayoutAlign="end start" fxLayout="row" fxLayoutGap="20px">
-          <button type="submit" [disabled]="this.form.invalid">Save</button>
-          <button type="button" (click)="onCancelClicked()">Cancel</button>
-        </div> -->
         <div fxLayoutAlign="end center" fxLayout="row" fxLayoutGap="0.1rem" fxFlex="7" class="actions-section">
           <button type="submit" [disabled]="this.form.invalid" mat-button fxLayoutAlign="end end">
             <img width=23 src="assets/img/correct.png" matTooltip="Check fields"
-              matTooltipDisabled="{{!this.form.invalid}}">
+              matTooltipDisabled="{{!this.form.invalid}}" alt="alt_image">
           </button>
           <button type="button" (click)="onCancelClicked()" mat-button fxLayoutAlign="end end">
-            <img fxLayoutAlign="end end" width=14 src="assets/img/cancel.png">
+            <img fxLayoutAlign="end end" width=14 src="assets/img/cancel.png" alt="alt_image">
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <div class="main-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
-    <img width=120 src="assets/img/email.png">
+    <img width=120 src="assets/img/email.png" alt="alt_image">
     <mat-card class="card-confirmation" fxLayout="column" fxLayoutGap="1rem">
         <div fxLayout="column" fxLayoutGap="0.5rem">
             <span class="card-text-title">
@@ -15,7 +15,7 @@
                 <div class="container">
                     <div id="username">
                         <label for="uname">
-                            <b>{{ 'username' | translate }}</b>
+                            <strong>{{ 'username' | translate }}</strong>
                         </label>
                         <input type="text" [placeholder]="'username' | translate" name="uname" #uname="ngModel"
                             [(ngModel)]="loginModel.username" required />
@@ -27,7 +27,7 @@
                     </div>
                     <div id="password">
                         <label for="psw">
-                            <b>{{ 'password' | translate }}</b>
+                            <strong>{{ 'password' | translate }}</strong>
                         </label>
                         <input type="password" [placeholder]="'password' | translate" name="psw" #psw="ngModel"
                             [(ngModel)]="loginModel.password" required />

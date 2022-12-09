@@ -7,8 +7,7 @@ import { LanguageModel } from '../../models/language.model';
 
 @Component({
   selector: 'app-language-select',
-  templateUrl: './language-select.component.html',
-  styleUrls: ['./language-select.component.scss'],
+  templateUrl: './language-select.component.html'
 })
 export class LanguageSelectComponent implements OnInit, OnDestroy {
   public currentLanguage: string = '';

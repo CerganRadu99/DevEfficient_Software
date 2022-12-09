@@ -10,9 +10,9 @@
           <mat-card-content>
             <div fxLayout="row" fxLayoutGap="0.2rem">
               <div>
-                <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png">
-                <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png">
-                <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png">
+                <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png" alt="alt_image">
+                <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png" alt="alt_image">
+                <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png" alt="alt_image">
               </div>
               <div>
                 <mat-card-title>{{ item.title }}</mat-card-title>
@@ -23,7 +23,7 @@
       </div>
     </ng-container>
     <div fxLayout="row" fxLayoutGap="0.7rem" fxLayoutAlign="center center" class="full-height">
-      <img width=50 *ngIf="sprintItems.length === 0" src="assets/img/planning.png">
+      <img width=50 *ngIf="sprintItems.length === 0" src="assets/img/planning.png" alt="alt_image">
       <div fxLayout="column">
         <span *ngIf="sprintItems.length === 0" class="text-drop-zone"> Plan your sprint </span>
         <span *ngIf="sprintItems.length === 0" class="text-drop-zone"> As a team, agree on what needs to be completed,
@@ -36,7 +36,7 @@
     <button [disabled]="isActivateSprintBtnDisabled()" (click)="onActivateSprintClicked()"
       class="activate-sprint-bttn"><span
         [ngClass]="{'activate-sprint-text-disabled': isActivateSprintBtnDisabled(), 'activate-sprint-text': !isActivateSprintBtnDisabled()}"
-        class="activate-sprint-text"><b>Activate
-          Sprint</b></span></button>
+        class="activate-sprint-text"><strong>Activate
+          Sprint</strong></span></button>
   </mat-card-actions>
 </mat-card>

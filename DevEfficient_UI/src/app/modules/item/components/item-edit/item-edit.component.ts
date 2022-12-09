@@ -105,11 +105,9 @@ export class ItemEditComponent implements OnInit, OnDestroy {
             assignedName: this.assigned.value
         }
         this.updateItem.emit(itemDetailsModel);
-    //     this.dialogRef.close({succedeed: true, data: itemDetailsModel});
     }
 
     public onCancelClicked() {
-        // this.dialogRef.close({succedeed: false});
         this.closeEditItemComponent.emit();
     }
 }

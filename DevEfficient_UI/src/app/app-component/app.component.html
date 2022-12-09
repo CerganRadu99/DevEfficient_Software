@@ -2,15 +2,9 @@
 <div fxLayout="column" class="full-height">
   <div class="toolbar" role="banner" fxFlex="5">
     <img width="60" src="assets/img/devefficient.png" alt="DevEfficient Logo" />
-    <!-- <div class="spacer"></div> -->
-    <!-- <app-navigation *ngIf="authService.isLoggedIn()"></app-navigation> -->
-    <!-- <app-language-select></app-language-select> -->
     <button *ngIf="this.authService.isLoggedIn()" mat-icon-button (click)="toggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
-    <!-- <button *ngIf="authService.isLoggedIn()" (click)="onLogout()">
-      {{ 'logout' | translate }}
-    </button> -->
   </div>
 
   <div class="full-height" fxLayout="column" fxFlex="95">
@@ -20,7 +14,7 @@
           <app-sidenav-responsive></app-sidenav-responsive>
         </mat-sidenav>
         <mat-sidenav-content>
-          <div class="content full-height full-width" role="main">
+          <div class="content full-height full-width" role="main" aria-labelledby="description">
             <router-outlet></router-outlet>
             <app-loading-spinner></app-loading-spinner>
           </div>
@@ -30,15 +24,10 @@
 
 
     <!-- Content -->
-    <div *ngIf="!this.authService.isLoggedIn()" class="content" role="main" fxLayoutAlign="center center" fxFlex="100">
+    <div *ngIf="!this.authService.isLoggedIn()" class="content" role="main" fxLayoutAlign="center center" fxFlex="100"
+      aria-labelledby="description">
       <router-outlet></router-outlet>
       <app-loading-spinner></app-loading-spinner>
     </div>
-
-    <!-- <div class="toolbar" fxLayoutAlign="center center" fxFlex="5">
-      <div fxLayout="row">
-        <span>{{ 'footer.version' | translate }}</span>
-      </div>
-    </div> -->
   </div>
 </div>

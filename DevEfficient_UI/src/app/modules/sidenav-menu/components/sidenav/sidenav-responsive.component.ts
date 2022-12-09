@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from "@angular/core";
-import {MediaMatcher} from '@angular/cdk/layout';
+import {Component } from "@angular/core";
 import { SidenavService } from "../../../shared/services/sidenav.service";
-import { animateText, onMainContentChange, onSideNavChange } from "../../../shared/animations/animations";
+import { animateText, onSideNavChange } from "../../../shared/animations/animations";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/modules/core/services/auth.service";
 
@@ -32,9 +31,6 @@ export class SidenavResponsiveComponent {
   onSinenavToggle() {
     this.sideNavState = !this.sideNavState
     
-    // setTimeout(() => {
-    //   this.linkText = this.sideNavState;
-    // }, 200)
     this._sidenavService.sideNavState$.next(this.sideNavState);
   }
 
@@ -59,7 +55,6 @@ export class SidenavResponsiveComponent {
   }
   public onLogout(): void {
     debugger;
-    // this.opened = false;
     this._sidenavService.sideNavState$.next(false);
     this.authService.logout();
   }

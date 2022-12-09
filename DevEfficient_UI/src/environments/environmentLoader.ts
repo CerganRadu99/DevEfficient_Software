@@ -1,7 +1,7 @@
 import { environment as defaultEnvironment } from './environment';
 
 export const environmentLoader = new Promise<any>((resolve, reject) => {
-  var xmlhttp = new XMLHttpRequest(),
+  let xmlhttp = new XMLHttpRequest(),
     method = 'GET',
     url = './assets/appSettings.json';
   xmlhttp.open(method, url, true);

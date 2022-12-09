@@ -47,7 +47,6 @@ export class TeamManagementComponent implements OnInit, OnDestroy {
               return of(null);
             }
             else {
-              // return this.teamMemberService.registerMember(result.data);
               return this.mailService.sendEmail({toEmail: result.data.email});
             }
           }

@@ -1,12 +1,11 @@
 /* eslint-disable no-debugger */
 import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { concatMap, debounceTime, distinctUntilChanged, of, Subject, switchMap, takeUntil, timeout } from "rxjs";
+import { concatMap, debounceTime, distinctUntilChanged, of, Subject, switchMap, takeUntil } from "rxjs";
 import { ItemService } from "../../../core/services/item.service";
 import { ItemModel } from "../../models/item.model";
 import {MatDialog} from '@angular/material/dialog';
 import { ItemAddComponent } from "../../../item/components/item-add/item-add.component";
-import { ItemEditComponent } from "../../../item/components/item-edit/item-edit.component";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { TeamMemberService } from "src/app/modules/core/services/team-member.service";
 import { MatMenuTrigger } from "@angular/material/menu";
@@ -15,7 +14,7 @@ import { ScrollDispatcher } from "@angular/cdk/scrolling";
 import { RetrievedMemberModel } from "src/app/modules/management/models/retrieved-member.model";
 import { ItemDetailsModel } from "src/app/modules/item/models/item-details.model";
 import { SearchItemsModel } from "../../models/search-items.model";
-import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormControl } from "@angular/forms";
 import { SprintService } from "src/app/modules/core/services/sprint.service";
 
 @Component({
@@ -115,7 +114,7 @@ export class DevboardComponent implements OnInit,OnDestroy{
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
         if(result.succedeed === false) {
-        
+          console.log("result.succedeed is false");
         }
         else {
           this.itemService.registerItem(result.data).pipe(
@@ -203,7 +202,7 @@ export class DevboardComponent implements OnInit,OnDestroy{
         event.previousIndex,
         event.currentIndex,
       );
-      var currentItem = event.container.data[event.currentIndex];
+      let currentItem = event.container.data[event.currentIndex];
       if(event.previousContainer.data.length === 0) {
         this.itemService.clearSprintOfItem(currentItem.id).pipe(
           switchMap((response) => {
@@ -223,7 +222,7 @@ export class DevboardComponent implements OnInit,OnDestroy{
         });
     }
     }
-    var currentItems = event.container.data;
+    let currentItems = event.container.data;
     const itemIds: Array<string> = currentItems.map(currentItem => currentItem.id);
     this.itemService.changeItemsOrder({itemIds: itemIds}).pipe(
       takeUntil(this.ngUnsubscribe)

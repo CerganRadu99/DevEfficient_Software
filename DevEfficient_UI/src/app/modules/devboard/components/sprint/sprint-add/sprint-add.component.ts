@@ -1,9 +1,8 @@
 /* eslint-disable no-debugger */
-import { Component, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialogRef } from "@angular/material/dialog";
 import { CreateSprintModel } from "../../../models/create-sprint.model";
-import { ItemModel } from "../../../models/item.model";
 
 @Component({
     selector: 'app-sprint-add',
@@ -39,10 +38,6 @@ export class SprintAddComponent {
     }
 
     public onSubmit() {
-        // const sprintItemIds: Array<string> = [];
-        // for(let item of this.sprintItems) {
-        //     sprintItemIds.push(item.id);
-        // }
         const createSprintModel: CreateSprintModel = {
             title: this.title.value,
             goal: this.goal.value,

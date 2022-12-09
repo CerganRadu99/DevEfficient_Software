@@ -1,16 +1,12 @@
 /* eslint-disable no-debugger */
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { Container } from "@angular/compiler/src/i18n/i18n_ast";
 import { Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { concatMap, of, Subject, switchMap, takeUntil } from "rxjs";
+import { of, Subject, switchMap, takeUntil } from "rxjs";
 import { ItemService } from "src/app/modules/core/services/item.service";
 import { SprintService } from "src/app/modules/core/services/sprint.service";
 import { TeamMemberService } from "src/app/modules/core/services/team-member.service";
-import { ItemEditComponent } from "src/app/modules/item/components/item-edit/item-edit.component";
-import { ItemDetailsModel } from "src/app/modules/item/models/item-details.model";
-import { RetrievedMemberModel } from "src/app/modules/management/models/retrieved-member.model";
 import { CreateSprintModel } from "../../models/create-sprint.model";
 import { ItemModel } from "../../models/item.model";
 import { SprintAddComponent } from "./sprint-add/sprint-add.component";

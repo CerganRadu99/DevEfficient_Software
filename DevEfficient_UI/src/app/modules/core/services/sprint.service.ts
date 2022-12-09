@@ -5,8 +5,6 @@ import { Observable } from "rxjs";
 import { CreateSprintModel } from "../../devboard/models/create-sprint.model";
 import { ItemModel } from "../../devboard/models/item.model";
 import { RegisteredSprintReturnModel } from "../../devboard/models/registered-sprint-return.model";
-import { CreateItemModel } from "../../item/models/create-item.model";
-import { ItemDetailsModel } from "../../item/models/item-details.model";
 import { ResponseModel } from "../../shared/dtos/ResponseModel";
 import { ResponseModelNonGeneric } from "../../shared/dtos/ResponseModelNonGeneric";
 import { RetrievedCurrentSprintModel } from "../../sprint/models/retrieved-currentsprint.model";

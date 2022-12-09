@@ -8,8 +8,6 @@ import { FormGroup, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/
 export class MatchPasswordDirective implements Validator {
   @Input() matchPassword: string[] = [];
 
-  constructor() { }
-
   validate(formGroup: FormGroup): ValidationErrors | null {
     const password = this.matchPassword[0];
     const confirmPassword = this.matchPassword[1];

@@ -1,5 +1,4 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { Container } from "@angular/compiler/src/i18n/i18n_ast";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
@@ -81,7 +80,7 @@ export class CurrentSprintComponent implements OnInit, OnDestroy {
     }
 
     public isItemDone(itemId: string) {
-        var item = this.doneItems.find(item => item.id === itemId);
+        let item = this.doneItems.find(item => item.id === itemId);
         return item !== undefined;
     }
 

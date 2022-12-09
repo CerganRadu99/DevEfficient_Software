@@ -8,8 +8,6 @@ import { AbstractControl, NG_VALIDATORS, Validator } from "@angular/forms";
 export class PasswordPatternDirective implements Validator {
   private readonly pattern: string = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
 
-  constructor() { }
-
   validate(control: AbstractControl): { [key: string]: any } | null {
     if (!control.value) {
       return null;

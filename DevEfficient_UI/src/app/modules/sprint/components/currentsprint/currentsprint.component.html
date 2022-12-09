@@ -9,7 +9,7 @@
                 customToolTip [contentTemplate]="template"
                 [startDate]="this.retrievedCurrentSprintModel.startDate.toString()"
                 [endDate]="this.retrievedCurrentSprintModel.endDate.toString()">
-                <img width=25 src="assets/img/clock.png">
+                <img width=25 src="assets/img/clock.png" alt="alt_image">
                 <span class="sprint-days">{{this.remainingDays}} days remaining</span>
             </div>
             <div>
@@ -50,19 +50,22 @@
                                     <div fxLayout="row" fxLayoutGap="0.3rem">
                                         <div>
                                             <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
-                                                matTooltip="Bug">
+                                                matTooltip="Bug" alt="alt_image">
                                             <img width=20 *ngIf="item.type === 'Task'"
-                                                src="assets/img/administration.png" matTooltip="Task">
+                                                src="assets/img/administration.png" matTooltip="Task" alt="alt_image">
                                             <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png"
-                                                matTooltip="Feature">
+                                                matTooltip="Feature" alt="alt_image">
                                         </div>
                                         <div>
                                             <img width=20 *ngIf="item.priority === 'Low'"
-                                                src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                                src="assets/img/low-priority.png" matTooltip="Low Priority"
+                                                alt="alt_image">
                                             <img width=20 *ngIf="item.priority === 'Medium'"
-                                                src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                                src="assets/img/priority1.png" matTooltip="Medium Priority"
+                                                alt="alt_image">
                                             <img width=20 *ngIf="item.priority === 'High'"
-                                                src="assets/img/prioritize.png" matTooltip="High Priority">
+                                                src="assets/img/prioritize.png" matTooltip="High Priority"
+                                                alt="alt_image">
                                         </div>
                                         <div>
                                             <span class="effort-item"
@@ -80,19 +83,22 @@
                                     <div fxLayout="row" fxLayoutGap="0.3rem">
                                         <div>
                                             <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
-                                                matTooltip="Bug">
+                                                matTooltip="Bug" alt="alt_image">
                                             <img width=20 *ngIf="item.type === 'Task'"
-                                                src="assets/img/administration.png" matTooltip="Task">
+                                                src="assets/img/administration.png" matTooltip="Task" alt="alt_image">
                                             <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png"
-                                                matTooltip="Feature">
+                                                matTooltip="Feature" alt="alt_image">
                                         </div>
                                         <div>
                                             <img width=20 *ngIf="item.priority === 'Low'"
-                                                src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                                src="assets/img/low-priority.png" matTooltip="Low Priority"
+                                                alt="alt_image">
                                             <img width=20 *ngIf="item.priority === 'Medium'"
-                                                src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                                src="assets/img/priority1.png" matTooltip="Medium Priority"
+                                                alt="alt_image">
                                             <img width=20 *ngIf="item.priority === 'High'"
-                                                src="assets/img/prioritize.png" matTooltip="High Priority">
+                                                src="assets/img/prioritize.png" matTooltip="High Priority"
+                                                alt="alt_image">
                                         </div>
                                         <div>
                                             <span class="effort-item"
@@ -112,19 +118,23 @@
                                             fxLayoutAlign="start center">
                                             <div>
                                                 <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png"
-                                                    matTooltip="Bug">
+                                                    matTooltip="Bug" alt="alt_image">
                                                 <img width=20 *ngIf="item.type === 'Task'"
-                                                    src="assets/img/administration.png" matTooltip="Task">
+                                                    src="assets/img/administration.png" matTooltip="Task"
+                                                    alt="alt_image">
                                                 <img width=20 *ngIf="item.type === 'Feature'"
-                                                    src="assets/img/trophyy.png" matTooltip="Feature">
+                                                    src="assets/img/trophyy.png" matTooltip="Feature" alt="alt_image">
                                             </div>
                                             <div>
                                                 <img width=20 *ngIf="item.priority === 'Low'"
-                                                    src="assets/img/low-priority.png" matTooltip="Low Priority">
+                                                    src="assets/img/low-priority.png" matTooltip="Low Priority"
+                                                    alt="alt_image">
                                                 <img width=20 *ngIf="item.priority === 'Medium'"
-                                                    src="assets/img/priority1.png" matTooltip="Medium Priority">
+                                                    src="assets/img/priority1.png" matTooltip="Medium Priority"
+                                                    alt="alt_image">
                                                 <img width=20 *ngIf="item.priority === 'High'"
-                                                    src="assets/img/prioritize.png" matTooltip="High Priority">
+                                                    src="assets/img/prioritize.png" matTooltip="High Priority"
+                                                    alt="alt_image">
                                             </div>
                                             <div>
                                                 <span class="effort-item"
@@ -145,7 +155,7 @@
                                                     <button [disabled]="this.form.invalid">
                                                         <img width=23 src="assets/img/correct.png"
                                                             matTooltip="Check fields"
-                                                            matTooltipDisabled="{{!this.form.invalid}}">
+                                                            matTooltipDisabled="{{!this.form.invalid}}" alt="alt_image">
                                                     </button>
                                                 </div>
                                             </form>
@@ -159,7 +169,7 @@
             </ng-container>
         </div>
         <div *ngIf="!this.isSprintActivated" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="1rem">
-            <img width=130 src="assets/img/file-transfer.png">
+            <img width=130 src="assets/img/file-transfer.png" alt="alt_image">
             <div fxLayout="column" fxLayoutAlign="enter center" fxLayoutGap="0.3rem">
                 <span class="no-sprint-text1">
                     There are no active sprints

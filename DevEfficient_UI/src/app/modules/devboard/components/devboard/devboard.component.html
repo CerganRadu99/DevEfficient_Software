@@ -12,7 +12,7 @@
                 [formControl]="searchControl" placeholder="Search Devboard">
             </div>
             <div fxLayoutAlign="center center" fxFlex="20">
-              <img width=20 height="20" src="assets/img/magnifying-glass.png">
+              <img width=20 height="20" src="assets/img/magnifying-glass.png" alt="alt_image">
             </div>
           </div>
         </div>
@@ -33,7 +33,6 @@
               </mat-radio-group>
             </div>
             <div fxLayoutAlign="start start" *ngIf="!this.isRadioButtonNone">
-              <!-- <mat-label>Select an option</mat-label> -->
               <mat-select style="padding: 10px;" formControlName="filterOption2"
                 (selectionChange)="onFilterOption2Changed($event)">
                 <div *ngFor="let option of filterDropdown">
@@ -77,32 +76,15 @@
                 <mat-card-content fxLayout="row">
                   <div fxLayout="row" fxLayoutGap="0.5rem" class="full-width">
                     <div>
-                      <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png">
-                      <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png">
-                      <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png">
-                      <!-- <mat-icon class="item-logo" *ngIf="item.type === 'Bug'" fxFlex="2">bug_report</mat-icon>
-                  <mat-icon class="item-logo" *ngIf="item.type === 'Task'" fxFlex="2">task</mat-icon>
-                  <mat-icon class="item-logo" *ngIf="item.type === 'Feature'" fxFlex="2">emoji_events</mat-icon> -->
+                      <img width=20 *ngIf="item.type === 'Bug'" src="assets/img/bug.png" alt="alt_image">
+                      <img width=20 *ngIf="item.type === 'Task'" src="assets/img/administration.png" alt="alt_image">
+                      <img width=20 *ngIf="item.type === 'Feature'" src="assets/img/trophyy.png" alt="alt_image">
                     </div>
                     <div>
                       <mat-card-title>{{ item.title }}</mat-card-title>
                     </div>
-                    <!-- <button class="menu-item-bttn" *ngIf="selectedItemId === item.id" mat-button>
-                  <mat-icon class="menu-item-icon">menu_book</mat-icon>
-                </button> -->
                   </div>
-                  <!-- <div fxLayout="row">
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <span>EstimatedHours: {{ item.estimatedHours }}</span>
-                  <span>Priority: {{ item.priority }}</span>
-                </div>
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <span>{{ item.state }}</span>
-                  <span>Effort: {{ item.effort }}</span>
-                </div>
-              </div> -->
                 </mat-card-content>
-                <!-- <mat-card-actions> </mat-card-actions> -->
               </mat-card>
             </div>
           </ng-container>

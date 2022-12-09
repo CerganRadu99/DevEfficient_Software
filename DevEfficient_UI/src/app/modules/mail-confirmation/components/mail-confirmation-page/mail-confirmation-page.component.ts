@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { LoginModel } from "src/app/modules/account/models/login.model";
@@ -10,15 +10,12 @@ import { TeamMemberService } from "src/app/modules/core/services/team-member.ser
     templateUrl: 'mail-confirmation-page.component.html',
     styleUrls: ['mail-confirmation-page.component.scss']
 })
-export class MailConfirmationPageComponent implements OnInit {
+export class MailConfirmationPageComponent {
 
     private destroy$: Subject<boolean> = new Subject();
     public loginModel = new LoginModel();
 
     constructor(private authService: AuthService, private teamMemberService: TeamMemberService, public router: Router) {}
-    ngOnInit(): void {
-        
-    }
 
     ngOnDestroy(): void {
         this.destroy$.next(true);

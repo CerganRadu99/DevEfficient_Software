@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginModel } from '../../account/models/login.model';
 import { RegisterModel } from '../../account/models/register.model';
 import { ResponseModel } from '../../shared/dtos/ResponseModel';
@@ -68,7 +68,6 @@ export class AuthService extends DataService {
       return true;
     }
     return false;
-    // return !!this.getJwt();
   }
 
   private setJwt(tokens: string): void {

@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, TemplateRef } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 
 @Component({
  selector: 'app-custom-tool-tip',
  templateUrl: './remaining-days-tooltip.component.html',
  styleUrls: ['./remaining-days-tooltip.component.scss']
 })
-export class RemainingDaysTooltip implements OnInit {
+export class RemainingDaysTooltip {
 
  @Input() startDate!: string;
  @Input() endDate!: string;
@@ -13,8 +13,5 @@ export class RemainingDaysTooltip implements OnInit {
  @Input() contentTemplate!: TemplateRef<any>;
 
  constructor() { }
-
- ngOnInit() {
- }
 
 } 
